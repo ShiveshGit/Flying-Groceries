@@ -1,0 +1,21 @@
+CategoryId,SubCategoryId,SubCategoryName
+1,1,Vegetables
+1,2,Fruits
+2,1,Milk
+2,2,Butter&More
+3,1,InstantFood&Mixes
+3,2,Sausage&Hams
+4,1,Chips
+4,2,NamkeenSnacks
+5,1,SoftDrinks
+5,2,Juices
+6,1,Rice
+6,2,Dal
+7,1,Tea
+7,2,Coffee
+8,1,Cookies&Biscuit
+8,2,Bread
+9,1,Noodles
+9,2,Frozen Snacks
+10,1,IceCream
+10,2,Chocolate

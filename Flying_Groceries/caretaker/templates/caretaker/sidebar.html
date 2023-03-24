@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'caretaker/sidebar.css' %}">
+    {% block scripts %} {% endblock %}
+</head>
+<body>
+    <div class="mainContainer">
+        <aside class="nav">
+            <div class="sidebar">
+                <ul class="sidebar__content">
+                    <li class="sidebar__content__item item-1">
+                        <img src="{% static 'caretaker/Company_logo.PNG' %}" class="sidebar__img" alt="" id="mainLogo">
+                        <figcaption>Flying Groceries</figcaption>
+                    </li>
+                    <li class="sidebar__content__item item-2">
+                        <img src="{% static 'caretaker/user.png' %}" alt="" class="sidebar__img">
+                        <figcaption>Transporter-Requests</figcaption>
+                    </li>
+                    <li class="sidebar__content__item item-3">
+                        <img src="{% static 'caretaker/graph.png' %}" alt="" class="sidebar__img" alt="">
+                        <figcaption>Analytics</figcaption>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+        {% block body %} {% endblock %}
+    </div>
+</body>
+</html>

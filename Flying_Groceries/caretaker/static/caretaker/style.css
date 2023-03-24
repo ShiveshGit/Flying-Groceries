@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+*,*::before,*::after{
+    box-sizing: border-box;
+}
+body{
+    margin:0px;
+    font-family: 'Roboto',sans-serif;
+    font-size: 1.3rem;
+}
+img{
+    max-width: 100%;
+}
+.container{
+    margin: 0 auto;
+    height:100%;
+    padding-right:2em;
+}
+.requests::-webkit-scrollbar{
+    display: none;
+}
+a{
+    margin: 0;
+    padding:0;
+    text-decoration: none;
+    color:black;
+}
+.nav{
+    width: 25%;
+    height:100%;
+}
+.sidebar__content{
+    list-style: none;
+    margin:0;
+    display: flex;
+    flex-direction: column;
+    padding:0;
+    height: 100%;
+    padding-right: 2em;
+    justify-content: space-around;
+}
+.sidebar{
+    padding-top:2em;
+    display: flex;
+    flex-direction: column;
+    gap:4em;
+    border: 2px solid black;
+    height: 100vh;
+}
+.sidebar__content__item{
+    padding:0px;
+    margin:0px;
+}
+.sidebar__img{
+    width:120px;
+    height: 100px;
+}
+#mainLogo{
+    width:120px;
+    height:100px;
+}
+.sidebar__content__item{
+    display: flex;
+    align-items: center;
+    gap:1em;
+    font-size:1.4rem;
+}
+.companyLogo{
+    padding-left:0.6em;
+    margin:0px;
+    display: flex;
+    gap:1em;
+    font-weight: 800;
+    align-items: center;
+}
+.mainContent{
+    /* border: 2px solid red; */
+}
+.mainContainer{
+    display: flex;
+    /* border: 2px solid green; */
+    margin:0px;
+    padding:0px;
+}
+.mainContent{
+    width:100%;
+    /* padding:px; */
+    padding:0px;
+    margin:0px;
+}
+.requests{
+    height:100vh;
+    list-style: none;
+    overflow-y:auto;
+}
+.transporterImage{
+    width:380px;
+    height:360px;
+}
+.requests{
+    width:100%;
+    margin:0px;
+    padding:0px;
+    /* border: 2px solid pink; */
+}
+.request__item{
+    border: 2px solid green;
+    padding:0px;
+    margin:0px;
+    width:100%;
+    display: flex;
+    gap:10em;
+    padding:2em;
+    font-size:1.5rem;
+}
+.transporterImage{
+    border: 2px solid black;
+}
+h5>span{
+    /* border: 2px solid red; */
+}

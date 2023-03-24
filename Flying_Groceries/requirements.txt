@@ -1,0 +1,5 @@
+django==4.1.7
+mysqlclient==2.1.1
+django-composite-foreignkey==1.1.0
+mysql_connector_python==8.0.32
+pandas==1.5.3

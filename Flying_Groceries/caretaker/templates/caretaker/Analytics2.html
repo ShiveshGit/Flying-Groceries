@@ -1,0 +1,24 @@
+{% extends 'caretaker/sidebar.html' %}
+{% load static %}
+
+{% block scripts %}
+    <link rel="stylesheet" href="{% static 'caretaker/Analytics.css' %}">
+    <script src = "{% static 'caretaker/script.js' %}"></script>
+{% endblock %}
+
+{% block body %}
+    <div class="mainContent">
+        <div class="productAnalysis">
+            <h1>Product Analysis </h1>
+            <div id="productChart"></div>
+            <div id="invisibleDiv">
+                <span id="xaxis">{{xaxis}}</span>
+                <span id="yaxis">{{yaxis}}</span>
+            </div>
+        </div>
+        <div class="employeeAnalysis">
+            <h1>Employee Analysis</h1>
+        </div>
+    </div>    
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+{% endblock %}

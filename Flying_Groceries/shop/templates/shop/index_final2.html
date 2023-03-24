@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'shop/index_final2.css' %}">
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <div class="row">
+                <nav class="nav">
+                    <ul class="nav__list nav__list--primary">
+                        {% for i in categories1  %}
+                        <li class="nav__item"><a href="/shop/home/{{i.0}}/1" class="nav__link">{{i.1}}</a></li> 
+                        {% endfor %} 
+                        <li class="nav__item more"><a href="#" class="nav__link more">More &#8964;</a>
+                            <div class="dropdown">
+                                <ul>
+                                    {% for i in categories2 %}
+                                    <li><a href="/shop/home/{{i.0}}/1">{{i.1}}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="gridContainer">
+            <div class="flex">
+                <ul class="horizontalCards">
+                    {% for i in subCategories %}
+                    <li class="horizontalItem{{i.1}} horizontalCard">
+                        <a href="/shop/home/{{ActiveCategoryId}}/{{i.1}}"><img src="{% static 'shop/Fruits-and-Vegetables.jpg' %}" alt="" class="horizontalImg"></a>
+                        <h5>{{i.2}}</h5>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="grid">
+                <div class="specialGrid">
+                    <div class="specialFlex">
+                        <h3>Buy {{ActiveSubCategory}} Online</h3>
+                        <div class="checkboxes">
+                            <h3>Filters : </h3>
+                            <ul>
+                                <li>
+                                    <input type="checkbox" id="priceFilter" class="toggle" name="priceFilter">
+                                    <label for="priceFilter">Price</label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" id="discountFilter" class="toggle" name="discountFilter">
+                                    <label for="discountFilter">Discount</label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                {% for i in products %}
+                <div class="item{{i.2}} card">
+                    <figure>
+                        <img src="{% static 'shop/milk.jpg' %}" alt="Amul Doodh peeta  hai India" class="card__img">
+                    </figure>
+                    <div class="content">
+                        <h5>{{i.3}}</h5>
+                        <h6>{{i.4}}</h6>
+                        <h6>{{i.5}}</h6>
+                        <div class="subContent">
+                            <h6><s>₹{{i.7}}</s>&nbsp; ₹{{i.8}} </h6>
+                            <button>Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <script>
+        let more=document.getElementsByClassName("more")[0];
+        let moreLink=document.getElementsByClassName("more")[1];
+        var x=0;
+        more.onclick=()=>{
+            x++;
+            console.log(x);
+            let dropdown=document.getElementsByClassName("dropdown")[0];
+            dropdown.classList.toggle("makeVisible");
+            if(x%2!=0)
+            {
+                moreLink.innerHTML="More &#8963;";
+                console.log("In If")
+            }
+            else
+            {
+                moreLink.innerHTML="More &#8964;";
+                console.log("In else")
+            }
+        }
+    </script>
+</body>
+</html>

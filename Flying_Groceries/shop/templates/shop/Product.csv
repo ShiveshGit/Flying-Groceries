@@ -1,0 +1,101 @@
+CateoryId,SubCategoryId,ProductId,ProductName,Specification,CompanyName,Discount,MRP,Quantity
+1,1,1,Apple ,3 pcs,Tree Top Inc.,5,100,10
+1,1,2,Banana ,3 pcs,Fowler Farms,0,15,10
+1,1,3,Orange,3 pcs,Wonderful Citrus,0,30,10
+1,1,4,Strawberry,1 box,Driscoll's,0,400,5
+1,1,5,Pineapples,1 pc,Taylor Farms,10,50,10
+1,2,6,Carrots,10 pcs,Fresh Fields Farm,0,150,10
+1,2,7,Broccoli,1 pc,Green Sprout Produce,5,60,1
+1,2,8,Brinjal,1 pc,Harvest Time Vegetables,5,60,5
+1,2,9,Spinach,125g,Root & Branch Organic Vegetables,5,30,10
+1,2,10,Cucumber,3 pcs,Sunny Side Vegetables,5,50,10
+2,1,11,A2 Fresh Milk,500ml,Humpy Farms,0,25,10
+2,1,12,Toned Milk,500ml,Amul ,5,20,10
+2,1,13,Full Cream Milk,500ml,Amul,20,30,1
+2,1,14,Toned Milk,1l,Mother Dairy,5,20,5
+2,1,15,Plant Milk,500ml,Pilk,5,60,5
+2,2,16,Malai Paneer,200g,Mother Dairy,0,50,5
+2,2,17,Tofu,200g,So-Lite,0,50,10
+2,2,18,Taaza Paneer,200g,Country Delight,5,60,5
+2,2,19,Block Paneer,200g,Gowardhan,5,80,5
+2,2,20,Fresh Malai Paneer,200g,Amul,0,100,5
+3,1,21,Poha Breakfast Mix,60g,MTR,0,100,20
+3,1,22,Upma Breakfast Mix,60g,MTR,0,150,5
+3,1,23,Rava Idli Breakfast Mix,1kg,MTR,10,100,10
+3,1,24,Rice Idli Breakfast Mix,500g,Gits,10,150,10
+3,1,25,Dahi vada Masala Mix,250g,Haldiram's,10,130,10
+3,2,26,Chicken Plain Salami,250g,Delichic,5,120,10
+3,2,27,Chicken Herbs Sausage,200g,Delichic,10,110,10
+3,2,28,Chicken Sausage,500g,Meatzza,5,180,20
+3,2,29,Naturally Smoked Chicken,500g,Sumeru,0,200,20
+3,2,30,Chicken Sliced Ham,200g,Carnivore,40,160,20
+4,1,31,Cheese Nachos,60g,Dorritos,10,110,20
+4,1,32,Masala Munch Crisps,82g,Kurkure,10,20,30
+4,1,33,Golden Sizzle Popcorn,30g,Act II,0,20,2
+4,1,34,Navratan Mixture,220g,Haldiram's,0,20,1
+4,1,35,Puffcorn,55g,Kurkure,10,20,20
+4,2,36,Boondi Namkeen,220g,Haldiram's,10,100,20
+4,2,37,Peanut Namkeen,200g,Bikano,10,100,5
+4,2,38,Mathri,200g,Haldiram's,0,60,10
+4,2,39,Roasted Chana,500g,GMC,0,75,15
+4,2,40,Kachori Namkeen,200g,Haldiram's,0,70,2
+5,1,41,Coca-Cola,750ml,Coca-Cola,0,40,1
+5,1,42,Thums Up,750ml,Thums Up,50,40,20
+5,1,43,Lime 'N' Lemon,750ml,Limca,0,50,10
+5,1,44,Orange Flavored Soft Drink,750ml,Fanta,10,50,10
+5,1,45,Black Zero Sugar Soft Drink,250ml,Pepsi,10,50,10
+5,2,46,Orange Juice,200ml,Fresca,5,60,10
+5,2,47,Peach Flavored Fruit Drink,600ml,Paper Boat,10,50,10
+5,2,48,Orange Delight Juice,1l,Tropicana,10,70,10
+5,2,49,Mango Drink,1.8l,Frooti,10,80,10
+5,2,50,Guava Juice,250ml,Fresca,10,50,10
+6,1,51,Rozana Basmati Rice,1kg,Fortune,5,120,20
+6,1,52,Rozana Super basmati Rice,5kg,Dawat,10,400,30
+6,1,53,Dubar Basmati Rice,1kg,India Gate,10,80,40
+6,1,54,Puffed Rice,200g,GMC,10,320,20
+6,1,55,Feast Rozzana Basmati Rice,1kg,India Gate,0,190,10
+6,2,56,Chana Dal,1kg,Rajdhani,0,100,30
+6,2,57,Premium Unpolished Chana Dal,1kg ,GMC,0,50,40
+6,2,58,Whole Urad ,1kg,Rajdhani,5,450,50
+6,2,59,ArharDal/Toor Dal,1kg,GMC,5,200,40
+6,2,60,Organic Arhar Dal,500g,Aashirvaad,5,1000,20
+7,1,61,Premium Tea,1.5kg,Tata Tea,10,120,30
+7,1,62,Agni Special Blend Tea,1kg,Tata Tea,40,85,10
+7,1,63,Spiced Tea,250g,Wagh Bakri,5,820,30
+7,1,64,Gold Tea,1kg,Tata Tea,10,640,20
+7,1,65,Masala Tea,250g,Society Tea,0,400,10
+7,2,66,Classic Instant Cooffee,50g,Nescafe Classic,0,30,40
+7,2,67,Caramel Instant Coffee,100g,Country Bean,5,250,30
+7,2,68,Butterscotch Delight Coffee,100g,Rage Coffee,10,500,20
+7,2,69,Instan Coffee,100g,Rage Coffee,0,800,10
+7,2,70,French Vanilla Premium,100g,Sleepy Owl,0,1000,40
+8,1,71,Good Day Butter Biscuit,60g,Britania,10,700,50
+8,1,72,BisCafe Coffee Crackers,100g,Britannia,5,600,30
+8,1,73,RiteBite Choco Chip Cookies,55g,Max Protein,15,300,60
+8,1,74,Good Day Chocochip Cookies,400g,Britannia,10,400,40
+8,1,75,Coconut Cookies,200g,Batter Chatter,15,50,20
+8,2,76,Hearty Brown Bread,400g,Harvest Gold,10,75,30
+8,2,77,White Bread,700g,Harvest Gold,5,78,10
+8,2,78,Milk Bread,400g,English Oven,10,50,40
+8,2,79,Multigrain Bread,400g,English Oven,0,200,50
+8,2,80,Kulcha,250g,Harvest Gold,0,80,30
+9,1,81,Masla Noodels,70g,Maggi,0,100,40
+9,1,82,Masala 2 Minute Instant Noodles,560g,Maggi,0,90,20
+9,1,83,Ready to Eat Chicken Flavoured Instant Noodles,70g,Wai Wai,0,40,40
+9,1,84,Magic Masala Instant Noodles,60g,Sunfeast,0,70,50
+9,1,85,Ramen Masala Noodles,240g,Top,0,1000,30
+9,2,86,Hara Bhara Kabab,300g,Haldiram's,5,70,20
+9,2,87,Punjabi Samosa,650g,Haldiram's,5,300,10
+9,2,88,Veggie Burger Patty,360g,McCain,5,50,40
+9,2,89,Veggie Pizza Pocket,340g,ITC Master Chef,5,80,30
+9,2,90,Vegetable Spring Roll,420g,Goeld,5,60,20
+10,1,91,Cafe Mocha Ice Cream,125ml,Giani's,10,80,40
+10,1,92,Kesar Pista Ice Cream Stick,70 ml,Grameen,10,100,30
+10,1,93,Gorumet Silk Chocolate,140ml,Vadilal,10,90,20
+10,1,94,Chocolate Brown Ice Cream,1l,Amul,10,50,10
+10,1,95,Double Chocolate Ice Cream,125ml,London Dairy,5,60,50
+10,2,96,Gems Shaped Chocolates,17g,Cadbury,5,40,60
+10,2,97,Dairy Milk Chocolate,24g,Cadbury,5,50,40
+10,2,98,KitKat 4 Finger Wafer Chocolate Bar,38.5g,Nestle,0,30,30
+10,2,99,Smooth Milk Chocolate,56g,Galaxy,0,20,20
+10,2,100,Creamy Milk Chocolate Bar,100g,Hershey's,0,20,10

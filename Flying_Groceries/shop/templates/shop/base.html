@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'shop/base_style.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    {% block scripts %} {% endblock %}
+</head>
+<body>
+    <header>
+        <div class="container_base">
+            <div class="row_base">
+                <a href="#" id="logo_base"><img src="{% static 'shop/Company_logo.PNG' %}" alt="Company Logo"></a>
+                <nav class="nav_base">
+                    <ul class="nav__list_base nav__list_base--primary">
+                        <li class="nav__item_base"><a href="#" class="nav__link_base">Home</a></li>
+                        <li class="nav__item_base"><a href="#" class="nav__link_base">Account</a></li>
+                        <li class="nav__item_base"><a href="#" class="nav__link_base nav__link--button_base">Cart</a></li>
+                        <li class="nav__item_base"><a href="#" class="nav__link_base">Brands</a></li>
+                    </ul>
+                    <ul class="nav__list_base nav__list_base--secondary"> 
+                        <li class="nav__item_base">
+                            <form action="" class="searchForm">
+                                <input type="text" id="search" name="search">
+                                <label for="search" id="labelSearch">Search <span class="auto-input" id="clickOff"></span></label>
+                            </form>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <hr>
+    {% block body %} {% endblock %}
+    <script>
+         let typed=new Typed(".auto-input",{
+            strings:[" Milk"," Vegetables"," Fruits"],
+            typeSpeed:100,
+            backSpeed:100,
+            loop:true
+        })
+    </script>
+    
+</body>
+</html>
