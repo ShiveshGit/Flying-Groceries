@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from . import db_connection
 # Create your views here.
 def index(request,*args,**kwargs):
+    print("Post = ",request.POST)
     catId=1
     subCatId=1
     if(kwargs=={}):
@@ -22,3 +23,7 @@ def index(request,*args,**kwargs):
     return render(request,'shop/index_final3.html',params)
 def test(request):
     return render(request,'shop/base.html')
+def apis(request):
+    print(request.POST)
+    # print(request.POST.get())
+    return HttpResponse(request.POST)

@@ -3,7 +3,6 @@
 
 {% block scripts %}
     <link rel="stylesheet" href="{% static 'shop/index_final3.css' %}">
-    <script src="{% static 'shop/index_script.js' %}"></script>
 {% endblock %}
 
 {% block body %}
@@ -48,6 +47,7 @@
                         <div class="checkboxes">
                             <h3>Filters : </h3>
                             <ul>
+                                {% csrf_token %}
                                 <li>
                                     <input type="checkbox" id="priceFilter" class="toggle" name="priceFilter">
                                     <label for="priceFilter">Price</label>
@@ -79,4 +79,48 @@
             </div>
         </div>
     </div>
+    <script>
+        let more=document.getElementsByClassName("more")[0];
+        let moreLink=document.getElementsByClassName("more")[1];
+        var x=0;
+        more.onclick=()=>{
+            x++;
+            console.log(x);
+            let dropdown=document.getElementsByClassName("dropdown")[0];
+            dropdown.classList.toggle("makeVisible");
+            if(x%2!=0)
+            {
+                moreLink.innerHTML="More &#8963;";
+                console.log("In If")
+            }
+            else
+            {
+                moreLink.innerHTML="More &#8964;";
+                console.log("In else")
+            }
+        }
+        let priceFilter = document.getElementById("priceFilter")
+        let discountFilter = document.getElementById("discountFilter")
+        let clickedDiscount=0;
+        let clickedPrice=0;
+        let url ='/shop/api'
+        priceFilter.onclick=(e)=>{
+            clickedPrice =clickedPrice^1;
+            console.log("Here")
+            if(clickedPrice==1)
+            {
+                const data = {clickedPrice,clickedDiscount};
+                const csrf = document.querySelector('[name = csrfmiddlewaretoken]').value;
+                const options ={
+                    method:'POST',
+                    headers:{
+                        'Content-Type':'application/json',
+                        'X-CSRFToken' : csrf
+                    },
+                    body:JSON.stringify(data)
+                };
+                fetch(url,options)
+            }
+        }
+    </script>
 {% endblock %}

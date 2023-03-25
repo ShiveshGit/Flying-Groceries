@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transporter-Requests Page</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'caretaker/style.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+</head>
+<body>
+    <div class="mainContainer">
+        <aside class="nav">
+            <div class="sidebar">
+                <ul class="sidebar__content">
+                    <li class="sidebar__content__item item-1">
+                        <img src="{% static 'caretaker/Company_logo.png' %}" class="sidebar__img" alt="" id="mainLogo">
+                        <figcaption>Flying Groceries</figcaption>
+                    </li>
+                    <li class="sidebar__content__item item-2">
+                        <img src="{% static 'caretaker/user.png' %}" alt="" class="sidebar__img">
+                        <figcaption>Transporter-Requests</figcaption>
+                    </li>
+                    <li class="sidebar__content__item item-3">
+                        <img src="{% static 'caretaker/graph.png' %}" alt="" class="sidebar__img" alt="">
+                        <figcaption>Analytics</figcaption>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+        <div class="mainContent">
+            {% for i in Requests %}
+            <div class="item{{i.0}} card">
+                <img src="{% static 'caretaker/user.png' %}" class="transporterImg" alt="">
+                <div class="biodata">
+                    <h5>First - Name : <span>{{i.1}}</span></h5>
+                    <h5>Middle - Name : <span>{{i.2}}</span></h5>
+                    <h5>Last- Name : <span>{{i.3}}</span></h5>
+                    <h5>Working - Experience : <span>10 years</span></h5>
+                    <h5>Phone No : <span>{{i.4}}</span> </h5>
+                    <h5>Previously Worked With  : <span>Google, Microsoft,Oracle</span></h5>
+                </div>
+                <form action="/caretaker/requests/" method="POST"> {% csrf_token %}
+                    <input type="text" id="requestId" name="requestId" value="{{i.0}}">
+                    <input type="text" class="decision" id="decision{{i.0}}" name="decision">
+                    <div class="buttons">
+                        <span id="invisibleSpan"></span>
+                        <div class="acceptButton">
+                            <button id="acceptBox" type="submit" onclick = "(function(){
+                                let decision = document.getElementById('decision{{i.0}}')
+                                decision.setAttribute('value','1')
+                             })()">&check;</button><span>Accept</span>
+                        </div>
+                        <div class="rejectButton">
+                            <button id="rejectBox" type="submit" onclick = "(function(){
+                                let decision = document.getElementById('decision{{i.0}}')
+                                decision.setAttribute('value','2')
+                             })()">&#10005;</button><span>Reject</span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <script>
+        let acceptBox = document.getElementById("acceptBox");
+        let rejectBox = document.getElementById("rejectBox");
+        // acceptBox.onclick=()=>{
+        //     decision.setAttribute("value","1");
+        // }
+    </script>
+</body>
+</html>
