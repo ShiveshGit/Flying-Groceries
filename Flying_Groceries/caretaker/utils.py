@@ -16,15 +16,19 @@ def get_graph():
     buffer.close()
     return graph
 
-def get_plot(x,y):
+def get_plot(x,y,z):
     plt.switch_backend('AGG')
     plt.figure(figsize=(9,5))
     plt.title('Popularity of Products Distribution')
     plt.plot(x,y)
     plt.xticks(rotation=60)
     plt.xticks(fontsize=8)
-    plt.xlabel('(CategoryId,SubCategoryId,ProductId) --------------> ')
-    plt.ylabel('Number of Customers ------------>')
+    if(z==0):
+        plt.xlabel('(CategoryId,SubCategoryId,ProductId) --------------> ')
+        plt.ylabel('Number of Customers ------------>')
+    else:
+        plt.xlabel('Date of Ordering --------------> ')
+        plt.ylabel('Number of Orders ------------>')
     plt.tight_layout()
     graph = get_graph()
     return graph

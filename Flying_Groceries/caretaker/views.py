@@ -18,12 +18,16 @@ def transporterRequests(request):
     return render(request,'caretaker/requests3.html',params)
 def analytics(request):
     lst = db_connection.getAnalysis()
+    lst1 = db_connection.getOrderAnalysis()
+    lst2= db_connection.getTransporterAnalysis()
+    x1=lst1[0]
+    y1=lst1[1]
     x=lst[0]
     x=[str(i) for i in x]
     y=lst[1]
     rows=lst[2]
     total =rows.pop()
-    chart = get_plot(x,y)
-    print(chart)
-    params = {'chart':chart,'rows':rows,'total':total[1]}
+    chart = get_plot(x,y,0)
+    chart1 = get_plot(x1,y1,1)
+    params = {'chart':chart,'rows':rows,'total':total[1],'chart1':chart1,'transporter':lst2}
     return render(request,'caretaker/Analytics2.html',params)

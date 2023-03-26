@@ -1,4 +1,5 @@
 import mysql.connector
+from datetime import datetime
 mydb = mysql.connector.connect(
     host = "localhost",
     user = "root",
@@ -26,6 +27,36 @@ def getAnalysis():
         x.append((i[0],i[1],i[2]))
     return [x,y,special]
 
+def getOrderAnalysis():
+    mycursor.execute('''SELECT CheckOutDateAndTime, ProductId, count(OrderId), GROUPING(CheckOutDateAndTime), GROUPING(ProductId)
+                        FROM Delivery
+                        GROUP BY CheckOutDateAndTime, ProductId WITH ROLLUP;''')
+    x=[]
+    y=[]
+    myresult = mycursor.fetchall()
+    totalOrders = myresult.pop()
+    for i in myresult:
+        if i[1]==None:
+            print(type(i[0]))
+            d=i[0].strftime("%d/%m/%Y")
+            x.append(d)
+            y.append(i[2])
+    return [x,y]
+
+def getTransporterAnalysis():
+    mycursor.execute('''
+                        SELECT Transporter.TransporterId, Transporter.ActiveStatus, count(OrderId)
+                        FROM GetsAssigned LEFT JOIN Transporter ON GetsAssigned.TransporterId=Transporter.TransporterId
+                        GROUP BY TransporterId, ActiveStatus WITH ROLLUP;
+                    ''')
+    myresult = mycursor.fetchall()
+    result =[]
+    myresut=myresult.pop()
+    for i in myresult:
+        if i[1]==None:
+            result.append((i[0],i[2]))
+    result=result[:12]
+    return result
 def getRequests():
     mycursor.execute('''SELECT RequestId, User_FirstName, User_MiddleName, User_LastName,PhoneNumber  FROM TransporterRequests ORDER BY RequestId''')
     myresult = mycursor.fetchall()
@@ -45,5 +76,5 @@ def setStatus(requestId,decision):
     
 mycursor = mydb.cursor()
 # transporter = getRequests()
-analysis = getAnalysis()
+analysis = getTransporterAnalysis()
 print(analysis)

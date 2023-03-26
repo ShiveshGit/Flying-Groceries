@@ -16,7 +16,7 @@
             </div>
             <div id="productAnalytics">
                 <h3>Category-wise distrbution of the customers orders</h3>
-                <table>
+                <table class="productTable">
                     <tr>
                         <th>CategoryId</th>
                         <th>Number of Customers</th>
@@ -35,8 +35,29 @@
                 </table>
             </div>
         </div>
-        <div class="employeeAnalysis">
-            <h1>Employee Analysis</h1>
+        <div class="orderAnalysis">
+            <h1>Order Analysis</h1>
+            <div id="orderChart">
+                {% if chart1 %}
+                <img src="data::image/png;base64,{{chart1|safe}}" alt="">
+                {% endif %}
+            </div>
+            <div id="orderAnalytics">
+                <h3>Order Distribution of transporters</h3>
+                <table class="orderTable">
+                    <tr>
+                        <th>Transporter</th>
+                        <th>Number of Orders</th>
+                    </tr>
+                    {% for i in transporter %}
+                    <tr>
+                        {% for j in i %}
+                        <td>{{j}}</td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
         </div>
     </div>    
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>

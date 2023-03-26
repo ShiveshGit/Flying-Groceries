@@ -30,26 +30,43 @@ h3{
     display: flex;
     width:100%;
     text-align: center;
+    /* height: 100vh; */
 }
 .productAnalysis{
     /* border: 2px solid pink; */
     width: 50%;
 }
-#productChart{
+#productChart,#orderChart{
     margin: auto;
     /* padding:2em; */
     width:100%;
     /* border: 2px solid purple; */
 }
-.employeeAnalysis{
+.orderAnalysis{
     width: 50%;
-    border: 2px solid green;
+    border-left: 2px solid grey;
+    /* border: 2px solid green; */
 }
 #productAnalytics table{
     width:90%;
     margin:4px auto;
     border: 1px solid black;
 }
-#productAnalytics table tr th,td{
+.productTable tr,
+.productTable th,
+.productTable td{
+    border: 1px solid grey;
+}
+
+#orderAnalytics Table{
+    width:90%;
+    margin:4px auto;
+    border: 1px solid black;
+}
+
+
+.orderTable tr,
+.orderTable th,
+.orderTable td{
     border: 1px solid grey;
 }
