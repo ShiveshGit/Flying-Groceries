@@ -16,6 +16,6 @@ mycursor.execute("SHOW DATABASES")
 for db in mycursor:
     print(db)
 print(lst)
-sqlFormula = "UPDATE Product SET ManufacturingDate = %s WHERE ProductId = %s"
+sqlFormula = "UPDATE Delivery SET CheckOutDateAndTime = %s Where OrderId = %s "
 mycursor.executemany(sqlFormula,lst)
 mydb.commit()

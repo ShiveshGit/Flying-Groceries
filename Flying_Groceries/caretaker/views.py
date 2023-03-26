@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse,JsonResponse
 from . import db_connection
+from .utils import get_plot
 
 # Create your views here.
 def transporterRequests(request):
@@ -10,38 +11,19 @@ def transporterRequests(request):
         decision = request.POST.get("decision")
         requestId = int(requestId)
         decision = int(decision)
-        # print(type(requestId))
-        # print(type(decision))
-        # print(requestId,decision)
         print("Request Id = ",requestId)
         print("Decision = ",decision)
-        # db_connection.setStatus(requestId,decision)
+        db_connection.setStatus(requestId,decision)
     params = {'Requests':lst}
     return render(request,'caretaker/requests3.html',params)
 def analytics(request):
     lst = db_connection.getAnalysis()
-    ls1 = []
-    for i in lst:
-        if None in i:
-            ls1.append(i)
-    print(ls1)
-    ls2 = []
-    for i in ls1:
-        val1=i[0]
-        val2=i[2]
-        print(type(val1),type(val2))
-        if val1 != None:
-            ls2.append((val1,val2))
-    print(ls2)
-    xaxis =[]
-    yaxis =[]
-    for i in ls2:
-        xaxis.append(i[0])
-        yaxis.append(i[1])
-    print(xaxis)
-    print(yaxis)
-    params = {'xaxis':xaxis,'yaxis':yaxis}
+    x=lst[0]
+    x=[str(i) for i in x]
+    y=lst[1]
+    rows=lst[2]
+    total =rows.pop()
+    chart = get_plot(x,y)
+    print(chart)
+    params = {'chart':chart,'rows':rows,'total':total[1]}
     return render(request,'caretaker/Analytics2.html',params)
-
-# def getOption(request):
-#     ourTransporter = 

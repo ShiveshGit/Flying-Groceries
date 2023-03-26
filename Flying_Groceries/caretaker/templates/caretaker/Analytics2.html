@@ -3,17 +3,36 @@
 
 {% block scripts %}
     <link rel="stylesheet" href="{% static 'caretaker/Analytics.css' %}">
-    <script src = "{% static 'caretaker/script.js' %}"></script>
 {% endblock %}
 
 {% block body %}
     <div class="mainContent">
         <div class="productAnalysis">
             <h1>Product Analysis </h1>
-            <div id="productChart"></div>
-            <div id="invisibleDiv">
-                <span id="xaxis">{{xaxis}}</span>
-                <span id="yaxis">{{yaxis}}</span>
+            <div id="productChart">
+                {% if chart %}
+                <img src="data::image/png;base64,{{chart|safe}}" alt="">
+                {% endif %}
+            </div>
+            <div id="productAnalytics">
+                <h3>Category-wise distrbution of the customers orders</h3>
+                <table>
+                    <tr>
+                        <th>CategoryId</th>
+                        <th>Number of Customers</th>
+                    </tr>
+                    {% for i in rows %}
+                    <tr>
+                        {% for j in i %}
+                        <td>{{j}}</td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                    <tr>
+                        <td>Total</td>
+                        <td>{{total}}</td>
+                    </tr>
+                </table>
             </div>
         </div>
         <div class="employeeAnalysis">
