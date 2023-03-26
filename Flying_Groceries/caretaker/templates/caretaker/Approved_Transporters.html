@@ -1,0 +1,24 @@
+{% extends 'caretaker/sidebar.html' %}
+{% load static %}
+
+{% block scripts %}
+<link rel="stylesheet" href="{% static 'caretaker/style.css' %}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+{% endblock %}
+
+{% block body %}
+<div class="mainContent">
+    {% for i in Transporters %}
+    <div class="item{{i.0}} card">
+        <img src="{% static 'caretaker/user.png' %}" class="transporterImg" alt="">
+        <div class="biodata">
+            <h5>First - Name : <span>{{i.1}}</span></h5>
+            <h5>Middle - Name : <span>{{i.2}}</span></h5>
+            <h5>Last- Name : <span>{{i.3}}</span></h5>
+            <h5>Phone No : <span>{{i.4}}</span> </h5>
+            <h5>Salary : <span>{{i.5}}</span></h5>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

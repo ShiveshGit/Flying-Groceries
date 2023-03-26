@@ -57,9 +57,18 @@ def getTransporterAnalysis():
             result.append((i[0],i[2]))
     result=result[:12]
     return result
+
+def getTransporters():
+    mycursor.execute('''
+                        SELECT TransporterId,User_Firstname,User_MiddleName,User_LastName,PhoneNumber,PresentSalary From Transporter order by TransporterId;
+                    ''')
+    myresult = mycursor.fetchall()
+    print(myresult)
+    return myresult
 def getRequests():
     mycursor.execute('''SELECT RequestId, User_FirstName, User_MiddleName, User_LastName,PhoneNumber  FROM TransporterRequests ORDER BY RequestId''')
     myresult = mycursor.fetchall()
+    print(myresult)
     return myresult
 
 def setStatus(requestId,decision):
@@ -76,5 +85,5 @@ def setStatus(requestId,decision):
     
 mycursor = mydb.cursor()
 # transporter = getRequests()
-analysis = getTransporterAnalysis()
+analysis = getTransporters()
 print(analysis)

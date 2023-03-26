@@ -16,6 +16,11 @@ def transporterRequests(request):
         db_connection.setStatus(requestId,decision)
     params = {'Requests':lst}
     return render(request,'caretaker/requests3.html',params)
+
+def approved(request):
+    lst = db_connection.getTransporters()
+    params={'Transporters':lst}
+    return render(request,'caretaker/Approved_Transporters.html',params)
 def analytics(request):
     lst = db_connection.getAnalysis()
     lst1 = db_connection.getOrderAnalysis()

@@ -4,5 +4,6 @@ from . import views
 urlpatterns=[
     path('requests/',views.transporterRequests,name="ShopHome"),
     path('analytics/',views.analytics,name="Analytics"),
+    path('approved/',views.approved,name="Approved")
     # path('getoption',views.getOption,name = "getOption")
 ]
