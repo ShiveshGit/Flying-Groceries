@@ -6,68 +6,65 @@ import random
 
 # TAKE PRODUCT DATA
 filename = "Product.csv"
-fields_p=[]
-rows_p=[]
-with open(filename,'r') as csvfile:
-    csvreader=csv.reader(csvfile)
-    fields_p=next(csvreader)
+fields_p = []
+rows_p = []
+with open(filename, "r") as csvfile:
+    csvreader = csv.reader(csvfile)
+    fields_p = next(csvreader)
     for row in csvreader:
         rows_p.append(row)
-ProductData=[]
+ProductData = []
 print(rows_p)
 for i in rows_p:
-    i[0]=int(i[0]) #cat id
-    i[1]=int(i[1]) # subcat id
-    i[2]=int(i[2]) # product id
-    i[8]=int(i[8]) # quantity
+    i[0] = int(i[0])  # cat id
+    i[1] = int(i[1])  # subcat id
+    i[2] = int(i[2])  # product id
+    i[8] = int(i[8])  # quantity
     ProductData.append(tuple(i))
 print(ProductData)
 
 # TAKE DELIVERY.CSV DATA
 filename = "delivery.csv"
-fields_d=[]
-rows_d=[]
-with open(filename,'r') as csvfile:
-    csvreader=csv.reader(csvfile)
-    fields_d=next(csvreader)
+fields_d = []
+rows_d = []
+with open(filename, "r") as csvfile:
+    csvreader = csv.reader(csvfile)
+    fields_d = next(csvreader)
     for row in csvreader:
         rows_d.append(row)
-del_data=[]
+del_data = []
 for i in rows_d:
-    i[0]=int(i[0])
-    i[1]=int(i[1])
+    i[0] = int(i[0])
+    i[1] = int(i[1])
     del_data.append(tuple(i))
 print(del_data)
 mydb = mysql.connector.connect(
-    host="localhost",
-    user="root",
-    passwd="123456",
-    database="flying_groceries"
+    host="localhost", user="root", passwd="123456", database="flying_groceries"
 )
 
-mycursor=mydb.cursor()
-order_entries=[]
+mycursor = mydb.cursor()
+order_entries = []
 for i in del_data:
-    l=[]
+    l = []
     l.append(i[0])
     l.append(i[1])
     l.append(i[1])
 
-    n=random.randint(1,99)
-    tup=ProductData[n]
+    n = random.randint(1, 99)
+    tup = ProductData[n]
     l.append(tup[0])
     l.append(tup[1])
     l.append(tup[2])
-    l.append(random.randint(1,tup[8]))
+    l.append(random.randint(1, tup[8]))
 
     l.append("paytm")
-    l.append(random.randint(0,2)) #del_status
-    l=tuple(l)
+    l.append(random.randint(0, 2))  # del_status
+    l = tuple(l)
     print(l)
     order_entries.append(l)
 
 sqlFormula = "INSERT INTO Delivery (PaymentId,CustomerId,TransporterId,CategoryId,SubCategoryId,ProductId,Quantity,PaymentType,DeliveryStatus) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s)"
-mycursor.executemany(sqlFormula,order_entries)
+mycursor.executemany(sqlFormula, order_entries)
 mydb.commit()
 
 # cart_entry=[]

@@ -75,7 +75,7 @@ a{
     width:8%;
     align-self: flex-start;
     margin:0;
-    border: 2px solid pink;
+    /* border: 2px solid pink; */
     padding:0;
 }
 

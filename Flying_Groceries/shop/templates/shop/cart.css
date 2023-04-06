@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+*,*::before,*::after{
+    box-sizing: border-box;
+}
+body{
+    margin:0px;
+    font-family: 'Roboto',sans-serif;
+    font-size: 1.3rem;
+}
+img{
+    max-width: 100%;
+}
+a{
+    color:rgb(235, 77, 77);
+}
+li{
+    list-style: none;
+}
+.container{
+   background-color: rgb(237, 234, 234);
+    width:50%;
+    margin:auto;
+}
+.row{
+    display: flex;
+    width:100%;
+}
+.col{
+    width:100%;
+}
+.myProducts img{
+    width:20%;
+
+    border: 2px solid rgb(206, 205, 205);
+    align-self: center;
+}
+.item{
+    margin:auto;
+    padding:0.3em 0.4em;
+
+}
+.myProducts{
+    margin:0px;
+    padding:0px;
+    display: flex;
+    justify-content: flex-start;
+    gap:2em;
+    padding-left: 0em;
+}
+.desc{
+    font-size:0.7em;
+    line-height: 0.5em;
+    margin-bottom:1em;
+    margin-top:auto;
+    margin-bottom:auto;
+}
+.header{
+    background-color: rgb(235, 77, 77);
+    color:white;
+}
+.Quantity{
+    width:20%;
+    margin:auto;
+}
+.Subtotal{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width:20%;
+}
+.Subtotal h3{
+    text-align: center;
+}
+input{
+    width:55%;
+}
+header{
+    border-bottom:2px solid rgb(205, 201, 201);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom:2em;
+    padding-right:1.2em;
+}
+.navbar{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    align-self: center;
+    gap:3em;
+    padding-right:0.5em;
+}
+.navbar li{
+    font-size:1.5rem;
+}
+.logo{
+    width:8%;
+    height:8%;
+}
+.navbar a{
+    color:black;
+    text-decoration: none;
+}
+.navbar a:hover{
+    text-decoration: underline;
+}
+.finaltotal{
+    width:40%;
+    border-top: 2px solid rgb(206, 67, 67);
+    display: flex;
+    gap:4em;
+}
+.checkout{
+    width:40%;
+}
+.checkout button{
+    border-radius: 3em;
+    width:100%;
+    padding:1em;
+    color:white;
+    background-color: rgb(235, 77, 77);
+    font-size:1.2rem;
+}
+.checkout button:hover{
+    cursor:pointer;
+    text-decoration: underline;
+}
+h3{
+    font-weight: 400;
+}
