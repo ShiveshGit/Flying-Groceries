@@ -29,14 +29,18 @@ img{
     list-style: none;
     margin:0;
     padding:0;
-    height: 100%;
+    /* height: 100%; */
     font-size: 1.2rem;
+    /* border: 2px solid blue; */
 }
 .sidebar__img{
     width:120px;
     height: 100px;
 }
 .sidebar{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     padding-top:2.2em;
     border: 2px solid black;
     height: 100vh;
@@ -56,12 +60,47 @@ img{
     color: white;
     text-decoration: underline;
 }
+.sidebar__content__item a:hover{
+    color:white;
+    text-decoration: underline;
+}
 .item-1:hover{
     background-color: white;
     color:black;
     cursor: pointer;
     text-decoration: underline;
 }
+.item-1 a:hover{
+    color:black;
+    text-decoration: underline;
+}
+a{
+    color:black;
+}
 a:visited{
     color:black;
+}
+.logout{
+    /* filter:invert(60) */
+    /* border: 2px solid red; */
+    margin-bottom:1em;
+    /* padding:1.2em 1.6em; */
+    display: flex;
+    align-items: center;
+    font-size:1.4rem;
+    padding-left:1.2em;
+    gap:1em;
+}
+.logout:hover{
+    background-color: rgb(231, 112, 112);;
+}
+.logout a:hover{
+    text-decoration: underline;
+    color: white;
+}
+.logoutimg{
+    scale:0.6;
+}
+#profileImg{
+    scale:0.48;
 }

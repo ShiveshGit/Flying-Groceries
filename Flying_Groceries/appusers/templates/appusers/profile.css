@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+*,*::before,*::after{
+    box-sizing: border-box;
+}
+body{
+    margin:0px;
+    padding:0px;
+    font-family: 'Roboto',sans-serif;
+    font-size: 1.3rem;
+}
+img{
+    max-width: 100%;
+}
+.item{
+    border: 2px solid black;
+    padding:1.2em;
+    margin:0px;
+    
+/* display: flex; */
+}
+
+.mainContainer{
+    display: flex;
+    border: 2px solid purple;
+    margin:0px;
+    /* padding:2em; */
+}
+.mainContent{
+    width: 80%;
+    /* border: 2px solid red; */
+    padding:0px;
+    margin:2em;
+}
+.accountDetails{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap:1.2em;
+}
+.profilePicture{
+    width:30%;
+    border: 2px solid black;
+    border-radius: 1.2em;
+}
+h3{
+    font-size: 1.8rem;
+}
+.innerInfo{
+    font-size: 1.8rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    width:90%;
+    /* border: 2px solid purple; */
+    margin-bottom:0.6em;
+}
+input{
+    font-size: 1.8rem;
+}
+.btn{
+    border-radius: 2em;
+    font-size: 1.6rem;
+    padding:0.6em 1.2em;
+    background-color: rgb(235, 77, 77);
+    color:white;
+    margin-top:1.2em;
+}
+.btn:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+
+
+
+/*             Styling the side bar            */
+.nav{
+    height: 100vh;
+    width:25%;
+    overflow-y: auto;
+}
+.sidebar__content{
+    list-style: none;
+    margin:0;
+    padding:0;
+    height: 100%;
+    font-size: 1.2rem;
+}
+.sidebar__img{
+    width:120px;
+    height: 100px;
+}
+.sidebar{
+    padding-top:2.2em;
+    border: 2px solid black;
+    height: 100vh;
+}
+.sidebar__content__item{
+    display: flex;
+    align-items: center;
+    gap:1em;
+    font-size:1.4rem;
+    border-bottom:2px solid rgb(180, 176, 176);
+    padding:0px;
+    margin:0px;
+}
+#invisibleSpan{
+    display: none;
+}

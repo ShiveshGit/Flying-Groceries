@@ -1,6 +1,25 @@
 window.onload=()=>{
+    function getCookie(name)
+    {
+        let cookieValue = null;
+        if(document.cookie && document.cookie !== "")
+        {
+            const cookies  = document.cookie.split(";");
+            for(let i=0;i<cookies.length;i++)
+            {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + "="))
+                {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
     let more=document.getElementsByClassName("more")[0];
     let moreLink=document.getElementsByClassName("more")[1];
+    console.log(moreLink);
     var x=0;
     more.onclick=()=>{
         x++;
@@ -18,36 +37,46 @@ window.onload=()=>{
             console.log("In else")
         }
     }
-    const req =async(data,csrf,url)=>{
-       
-        const options ={
-            method:'POST',
-            headers:{
-                'Content-Type':'application/json',
-                'X-CSRFToken' : csrf
-            },
-            body:JSON.stringify(data)
-        };
-        let p =await fetch(url,options);
-        let response = await p.json();
-        return response;
-    }
-    const mainFunc=async()=>{
-        let priceFilter = document.getElementById("priceFilter")
-        let discountFilter = document.getElementById("discountFilter")
-        let clickedPrice = 0;
-        let clickedDiscount = 0;
-        let url = "/shop/home"
-        priceFilter.onclick=(e)=>{
-            clickedPrice=clickedPrice^1;
+    cartButton = document.getElementsByClassName("CartButton");
+    addedButton = document.getElementsByClassName("AddedButton");
+    for(let i in cartButton)
+    {
+        console.log(cartButton[i]);
+        cartButton[i].onclick=()=>{
+            cartButton[i].style.display="none";
+            addedButton[i].style.display="block";
+            addedButton[i].disabled=true;
+            console.log(cartButton[i].classList)
+            let prodId = cartButton[i].id;
+            let catId = cartButton[i].classList[1];
+            let subCatId = cartButton[i].classList[2];
+            if(subCatId === undefined)
+            {
+                subCatId=catId;
+            }
+            console.log(subCatId);
+            // console.log(catId,subCatId)
+            fetch('/shop/cart',{
+                method:'POST',
+                headers:{
+                    "X-Requested-With": "XMLHttpRequest",
+                    "X-CSRFToken": getCookie("csrftoken"),
+                    'Content-Type':'application/json'
+                },
+                body:JSON.stringify({
+                    purpose:1,
+                    productId:prodId,
+                    categoryId:catId,
+                    subCategoryId:subCatId
+
+                })
+            })
+            .then((response)=>{
+                    return response.json();
+            })
+            .catch((error)=>{
+                    console.log("Got error")
+            })
         }
-        discountFilter.onclick=(e)=>{
-            clickedDiscount=clickedDiscount^1;
-        }
-        const data = {clickedPrice,clickedDiscount}
-        const csrf = document.querySelector('[name = csrfmiddlewaretoken]').value
-        let res = await req(data,csrf,url);
-        console.log(res)
     }
-    mainFunc()
 }

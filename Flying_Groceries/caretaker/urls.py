@@ -7,6 +7,6 @@ urlpatterns=[
     path('approved/',views.approved,name="Approved"),
     path('signup/',views.signup,name="signup"),
     path('login/',views.login,name="login"),
-    path('logout/',views.logout,name="logout")
-    # path('getoption',views.getOption,name = "getOption")
+    path('logout/',views.logout,name="logout"),
+    path('profile/',views.viewProfile,name="viewProfile")
 ]

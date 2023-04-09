@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Sign Up</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'caretaker/signup.css' %}">
+    
+</head>
+<body>
+    <header>
+        <img src="{% static 'caretaker/Company_logo.PNG' %}" alt="" class="logo">
+    </header>
+    <form action="" method="POST" class="customerSignup">
+        {% csrf_token %}
+        <div class="container">
+            <h3>Customer Signup Form</h3>
+            <div class="message">
+                {{message}}
+            </div>
+            <div class="FirstName">
+                <label for="firstName">First Name</label>
+                <input type="text" placeholder="First Name" name="firstName" required>
+            </div>
+            <div class="LastName">
+                <label for="lastName">Last Name</label>
+                <input type="text" placeholder="Last Name" name="lastName" required>
+            </div>
+            <div class="UserName">
+                <label for="userName" placeholder="Username">Username</label>
+                <input type="text" placeholder="Username" id="userName" name="userName" required>
+            </div>
+            <div class="Password">
+                <label for="password">Password</label>
+                <input type="password" placeholder="Password" id="password" name="password" required>
+            </div>
+            <div class="ConfirmPassword">
+                <label for="confirmedPassword">Confirm Password</label>
+                <input type="password" id="confirmedPassword" placeholder = "Confirm Password" name="confirmPassword" required>
+            </div>
+            <button type="submit" id="submitButton">Submit</button>
+            <a href="/caretaker/signup" class="loginLink">Already an exsisting user? Login</a>
+            <!-- </div> -->
+        </div>
+    </form>
+</body>
+</html>

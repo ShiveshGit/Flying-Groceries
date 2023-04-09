@@ -11,7 +11,6 @@ def getAnalysis():
         """SELECT CategoryId, SubCategoryId, ProductId, count(CustomerId) as 'NumberOfCustomers' FROM Cart GROUP BY CategoryId, SubCategoryId, ProductId WITH ROLLUP;"""
     )
     myresult = mycursor.fetchall()
-    print(myresult)
     finalResult = []
     special = []
     for i in myresult:
@@ -39,10 +38,10 @@ def getOrderAnalysis():
     x = []
     y = []
     myresult = mycursor.fetchall()
+    print(myresult)
     totalOrders = myresult.pop()
     for i in myresult:
         if i[1] == None:
-            print(type(i[0]))
             d = i[0].strftime("%d/%m/%Y")
             x.append(d)
             y.append(i[2])
@@ -74,7 +73,6 @@ def getTransporters():
                     """
     )
     myresult = mycursor.fetchall()
-    print(myresult)
     return myresult
 
 
@@ -83,7 +81,6 @@ def getRequests():
         """SELECT RequestId, User_FirstName, User_MiddleName, User_LastName,PhoneNumber  FROM TransporterRequests ORDER BY RequestId"""
     )
     myresult = mycursor.fetchall()
-    print(myresult)
     return myresult
 
 
@@ -101,8 +98,56 @@ def setStatus(requestId, decision):
     mycursor.execute(sqlFormula, transporter1)
     mydb.commit()
 
+def getProducts1(username):
+    sqlFormula1 = "SELECT CustomerId From Customer WHERE Username = %s"
+    CustomerName = (username,)
+    mycursor.execute(sqlFormula1,CustomerName)
+    result = mycursor.fetchall()[0]
+    print(type(result))
+    
+    sqlFormula2 = "SELECT ProductId,Quantity FROM CART WHERE CustomerId = %s"
+    mycursor.execute(sqlFormula2,result)
+    result = mycursor.fetchall()
+    print(result)
+    products =[]
+    for i in result:
+        products.append((i[0],))
+    print(products)
+    myresult =[]
+    for i in range(len(products)):
+        sqlForumula3 = "SELECT ProductId, ProductName, FinalPrice FROM Product WHERE ProductId = %s"
+        mycursor.execute(sqlForumula3,products[i])
+        res = mycursor.fetchall()
+        res.append(result[i][1])
+        myresult.append(res)
+    finalres=[]
+    for i in myresult:
+        finalres.append((i[0][0],i[0][1],i[0][2],i[1]))
+    print(finalres)
+    return finalres
+
+
+def getAdminDetails(username):
+    sqlFormula = "SELECT * FROM AppAdmin WHERE Username = %s"
+    value = (username,)
+    mycursor.execute(sqlFormula,value)
+    myresult = mycursor.fetchall()
+    return myresult
+
+def updateAdminInfo(firstName,middleName,lastName,userName,password,adminId):
+    sqlFormula = "UPDATE AppAdmin SET UserName = %s, User_FirstName = %s, User_MiddleName = %s,  User_LastName = %s,  UserPassword = %s WHERE AdminId = %s"
+    values = (userName,firstName,middleName,lastName,password,adminId) 
+    print(values)
+    mycursor.execute(sqlFormula,values)
+    mydb.commit()
+
+def getAdminId(username):
+    sqlFormula = "SELECT AdminId From AppAdmin WHERE Username = %s"
+    values = (username,)
+    mycursor.execute(sqlFormula,values)
+    myres = mycursor.fetchall()
+    return myres
 
 mycursor = mydb.cursor()
-# transporter = getRequests()
-analysis = getTransporters()
+analysis = getOrderAnalysis()
 print(analysis)

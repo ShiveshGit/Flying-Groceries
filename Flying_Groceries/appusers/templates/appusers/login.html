@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Sign Up</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'appusers/login.css' %}">
+</head>
+<body>
+    <header>
+        <img src="{% static 'appusers/Company_logo.PNG' %}" class = "logo" alt="">
+    </header>
+    <form action="" method="POST" class="customerLogin">
+        {% csrf_token %}
+        <div class="container">
+            <h3>Customer Login</h3>
+            {{message}}
+            <div class="UserName">
+                <label for="userName" placeholder="Username">Username</label>
+                <input type="text" placeholder="Username" id="userName" name="userName">
+            </div>
+            <div class="Password">
+                <label for="password">Password</label>
+                <input type="password" placeholder="Password" id="password" name="password">
+            </div>
+            <button type="submit">Log In</button>
+            <a href="http://127.0.0.1:8000/appusers/customer/signup" class="loginLink">New user? Signup</a>
+        </div>
+    </form>
+</body>
+</html>

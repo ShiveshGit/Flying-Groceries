@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+*,*::before,*::after{
+    box-sizing: border-box;
+}
+body{
+    margin:0px;
+    font-family: 'Roboto',sans-serif;
+    font-size: 1.3rem;
+}
+img{
+    max-width: 100%;
+}
+a{
+    color:rgb(235, 77, 77);
+    text-decoration: none;
+}
+a:hover{
+    text-decoration: underline;
+}
+li{
+    list-style: none;
+}
+.customerSignup{
+    border: 2px solid black;
+    margin:0px;
+    padding:0px;
+    width:30%;
+    margin: auto;
+}
+.container{
+    width:100%;
+    padding:0.8em;
+    margin:0 auto;
+    text-align: center;
+    background-color: rgb(244, 244, 244);
+}
+.container div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin:0.8em 0em;
+}
+label{
+    font-size: 1.2rem;
+    margin:0px;
+    padding:0px;
+}
+input{
+    margin-top:auto;
+    margin-bottom:auto;
+    width:60%;
+    font-size: 1.2rem;
+}
+button{
+    display: block;
+    background-color: rgb(235, 77, 77);
+    font-size:1.2rem;
+    margin:2em auto;
+    padding:0.5em 3em;
+    border-radius: 1.8em;
+    color:white;
+}
+button:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
+header{
+    padding-top:1.2em;
+    margin:0px;
+}
+.logo{
+    width:15%;
+    display: block;
+    margin:auto;
+}
+.message{
+    color:blue;
+    font-size:1.25rem;
+}

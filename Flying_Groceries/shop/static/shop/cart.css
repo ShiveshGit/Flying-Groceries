@@ -20,10 +20,13 @@ li{
    background-color: rgb(237, 234, 234);
     width:50%;
     margin:auto;
+    /* overflow: scroll; */
+    border: 2px solid red;
 }
 .row{
     display: flex;
     width:100%;
+
 }
 .col{
     width:100%;
@@ -60,7 +63,11 @@ li{
 }
 .Quantity{
     width:20%;
-    margin:auto;
+    margin:auto auto;
+}
+.Quantity input:disabled{
+    background-color: white;
+    text-align: center;
 }
 .Subtotal{
     display: flex;
@@ -108,7 +115,7 @@ header{
     width:40%;
     border-top: 2px solid rgb(206, 67, 67);
     display: flex;
-    gap:4em;
+    gap:3em;
 }
 .checkout{
     width:40%;
@@ -121,10 +128,18 @@ header{
     background-color: rgb(235, 77, 77);
     font-size:1.2rem;
 }
+.insideLink{
+    color:white;
+    text-decoration: none;
+    font-size:1.2rem;
+}
 .checkout button:hover{
     cursor:pointer;
     text-decoration: underline;
 }
 h3{
     font-weight: 400;
+}
+.hidden{
+    display: none;
 }

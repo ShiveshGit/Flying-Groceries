@@ -3,6 +3,7 @@
 
 {% block scripts %}
     <link rel="stylesheet" href="{% static 'shop/index_final3.css' %}">
+    <script src="{% static 'shop/index_script.js' %}"></script>
 {% endblock %}
 
 {% block body %}
@@ -70,8 +71,10 @@
                         <h6>{{i.4}}</h6>
                         <h6>{{i.5}}</h6>
                         <div class="subContent">
-                            <h6><s>₹{{i.7}}</s>&nbsp; ₹{{i.8}} </h6>
-                            <button>Add to Cart</button>
+                            <h6><s>₹{{i.7}}</s>₹{{i.8}}</h6>
+                            <button class = "CartButton {{i.0}} {{i.1}}" id = "{{i.2}}">Add to Cart</button>
+                            <button class="AddedButton {{i.0}} {{i.1}}" id = "{{i.2}}">&check;</button>
+                            <!-- <div class="AddedButton {{i.0}} {{i.1}}"><button class="minusButton">-</button> 1 <button class="plusButton">+</button></div> -->
                         </div>
                     </div>
                 </div>
@@ -79,48 +82,4 @@
             </div>
         </div>
     </div>
-    <script>
-        let more=document.getElementsByClassName("more")[0];
-        let moreLink=document.getElementsByClassName("more")[1];
-        var x=0;
-        more.onclick=()=>{
-            x++;
-            console.log(x);
-            let dropdown=document.getElementsByClassName("dropdown")[0];
-            dropdown.classList.toggle("makeVisible");
-            if(x%2!=0)
-            {
-                moreLink.innerHTML="More &#8963;";
-                console.log("In If")
-            }
-            else
-            {
-                moreLink.innerHTML="More &#8964;";
-                console.log("In else")
-            }
-        }
-        let priceFilter = document.getElementById("priceFilter")
-        let discountFilter = document.getElementById("discountFilter")
-        let clickedDiscount=0;
-        let clickedPrice=0;
-        let url ='/shop/api'
-        priceFilter.onclick=(e)=>{
-            clickedPrice =clickedPrice^1;
-            console.log("Here")
-            if(clickedPrice==1)
-            {
-                const data = {clickedPrice,clickedDiscount};
-                const csrf = document.querySelector('[name = csrfmiddlewaretoken]').value;
-                const options ={
-                    method:'POST',
-                    headers:{
-                        'Content-Type':'application/json',
-                        'X-CSRFToken' : csrf
-                    },
-                    body:JSON.stringify(data)
-                };
-                fetch(url,options)
-            }
-        }
-    </script>
 {% endblock %}

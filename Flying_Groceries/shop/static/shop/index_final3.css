@@ -164,15 +164,17 @@ a{
     width:140px;
     height:120px;
 }
-.subContent>button{
+.CartButton{
     background-color:rgba(168, 227, 168, 0.287);
     border-radius:0.6em;
     font-weight: 500;
     color:green;
     border:1px solid black;
+    /* display: none; */
 }
-.subContent>button:hover{
+.CartButton:hover{
     cursor: pointer;
+    text-decoration: underline;
 }
 .horizontalImg{
     width:120px
@@ -272,4 +274,12 @@ input[type="checkbox"].toggle:checked+label::after{
 }
 input[type="checkbox"].toggle:checked+label{
     color:red;
+}
+.AddedButton{
+    display: none;
+    background-color:rgba(168, 227, 168, 0.287);
+    border-radius:0.6em;
+    font-weight: 500;
+    color:green;
+    border:1px solid black;
 }

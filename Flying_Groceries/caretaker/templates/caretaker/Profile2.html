@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Sign Up</title>
+    <link rel="stylesheet" href="Profile2.css">
+</head>
+<body>
+    <div class="mainContainer">
+        <aside class="nav">
+            <div class="sidebar">
+                <ul class="sidebar__content">
+                    <li class="sidebar__content__item item-1">
+                        <img src="{% static 'caretaker/Company_logo.PNG' %}" class="sidebar__img" alt="" id="mainLogo">
+                        <a href="/shop/home"><figcaption>Flying Groceries</figcaption></a>
+                    </li>
+                    <li class="sidebar__content__item item-2">
+                        <img src="{% static 'caretaker/user.png' %}" alt="" class="sidebar__img">
+                        <a href="/caretaker/requests"><figcaption>Transporter-Requests</figcaption></a>
+                    </li>
+                    <li class="sidebar__content__item item-2">
+                        <img src="{% static 'caretaker/user.png' %}" alt="" class="sidebar__img">
+                        <a href="/caretaker/approved"><figcaption>Approved Transporters</figcaption></a>
+                    </li>
+                    <li class="sidebar__content__item item-3">
+                        <img src="{% static 'caretaker/graph.png' %}" alt="" class="sidebar__img" alt="">
+                        <a href="/caretaker/analytics"><figcaption>Analytics</figcaption></a>
+                    </li>
+                    <li class="sidebar__content__item item-4">
+                        <img src="user.png" alt="" class="sidebar__img" alt="">
+                        <a href="/caretaker/analytics"><figcaption>Profile Page</figcaption></a>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+        <form action="" method="POST" class="customerSignup">
+            <div class="container">
+                <h3>Admin Profile</h3>
+                <div class="image">
+                    <label for="profileimg">Profile Image</label>
+                    <a href="" class="imgUpload">Upload a new Image</a>
+                    <img src="user.png" alt="" id="profileimg">
+                </div>
+                <div class="FirstName">
+                    <label for="firstName">First Name</label>
+                    <input type="text" placeholder="First Name">
+                </div>
+                <div class="MiddleName">
+                    <label for="middleName">Middle Name</label>
+                    <input type="text" placeholder="Middle Name">
+                </div>
+                <div class="LastName">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" placeholder="Last Name">
+                </div>
+                <div class="UserName">
+                    <label for="userName" placeholder="Username">Username</label>
+                    <input type="text" placeholder="Username" id="userName">
+                </div>
+                <div class="Password">
+                    <label for="password">Password</label>
+                    <input type="password" placeholder="Password" id="password">
+                </div>
+                <div class="ConfirmPassword">
+                    <label for="confirmedPassword">Confirm Password</label>
+                    <input type="text" id="confirmedPassword" placeholder = "Confirm Password">
+                </div>
+                <!-- <div class="navs"> -->
+                <button type="submit">Save Changes</button>
+                <!-- </div> -->
+            </div>
+        </form>
+    </div>
+</body>
+</html>

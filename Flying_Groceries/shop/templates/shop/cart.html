@@ -5,21 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="cart.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'shop/cart.css' %}">
 </head>
 <body>
     <header>
-        <img src="Company_logo.PNG" class="logo" alt="">
+        <img src="{% static 'shop/Company_logo.PNG' %}" class="logo" alt="">
         <nav>
             <ul class="navbar">
-                <li><a href="">Home</a></li>
+                <li><a href="http://127.0.0.1:8000/shop/home/">Home</a></li>
                 <li><a href="">Account</a></li>
                 <li><a href="">Brands</a></li>
-                <!-- <li></li> -->
             </ul>
         </nav>
     </header>
-    <form class="container">
+    <form class="container" action="" method="POST">
+        {% csrf_token %}
         <div class="row header">
             <div class="col item">
                 Product
@@ -31,78 +32,110 @@
                 Subtotal
             </div>
         </div>
+        {% for i in products %}
         <div class="row product">
             <div class="col item">
                 <figure class="myProducts">
-                    <img src="Fruits-and-Vegetables.jpg" alt="">
+                    <img src="{% static 'shop/Fruits-and-Vegetables.jpg' %}" alt="">
                     <div class = "desc">
-                        <h3>Product Name</h3>
-                        <h3>₹ 100</h3>
-                        <a href="">Remove Product</a>
+                        <h3 class="{{i.2}}">{{i.3}}</h3>
+                        <h3 class="{{i.2}}">{{i.4}}</h3>
+                        <a href="/shop/remove/{{i.0}}/{{i.1}}/{{i.2}}">Remove Product</a>
                     </div>
                 </figure>
             </div>
             <div class="col Quantity">
-                <input type="number">
+                <button class="minus{{i.2}}">-</button><input type="number" class="{{i.2}}" value="{{i.5}}" name="Quantity{{forloop.counter}}" disabled><button class="plus{{i.2}}">+</button>
             </div>
             <div class="col Subtotal">
-                <h3>₹ 100</h3>
+                <h3 id="itemSubTotal{{i.2}}"></h3>
             </div>
         </div>
-        <div class="row product">
-            <div class="col item">
-                <figure class="myProducts">
-                    <img src="Fruits-and-Vegetables.jpg" alt="">
-                    <div class = "desc">
-                        <h3>Product Name</h3>
-                        <h3>₹ 100</h3>
-                        <a href="">Remove Product</a>
-                    </div>
-                </figure>
-            </div>
-            <div class="col Quantity">
-                <input type="number">
-            </div>
-            <div class="col Subtotal">
-                <h3>₹ 100</h3>
-            </div>
-        </div>
-        <div class="row product">
-            <div class="col item">
-                <figure class="myProducts">
-                    <img src="Fruits-and-Vegetables.jpg" alt="">
-                    <div class = "desc">
-                        <h3>Product Name</h3>
-                        <h3>₹ 100</h3>
-                        <a href="">Remove Product</a>
-                    </div>
-                </figure>
-            </div>
-            <div class="col Quantity">
-                <input type="number">
-            </div>
-            <div class="col Subtotal">
-                <h3>₹ 100</h3>
-            </div>
-        </div>
-        <div class="row product">
-            <div class="col item">
-                <figure class="myProducts">
-                    <img src="Fruits-and-Vegetables.jpg" alt="">
-                    <div class = "desc">
-                        <h3>Product Name</h3>
-                        <h3>₹ 100</h3>
-                        <a href="">Remove Product</a>
-                    </div>
-                </figure>
-            </div>
-            <div class="col Quantity">
-                <input type="number">
-            </div>
-            <div class="col Subtotal">
-                <h3>₹ 100</h3>
-            </div>
-        </div>
+        <input type="number" name="cat{{forloop.counter}}" value="{{i.0}}" class="hidden">
+        <input type="number" name="subCat{{forloop.counter}}" value="{{i.1}}" class="hidden">
+        <input type="number" name="pro{{forloop.counter}}" value="{{i.2}}" class="hidden">
+        <script>
+            function getCookie(name)
+            {
+                let cookieValue = null;
+                if(document.cookie && document.cookie !== "")
+                {
+                    const cookies  = document.cookie.split(";");
+                    for(let i=0;i<cookies.length;i++)
+                    {
+                        const cookie = cookies[i].trim();
+                        if (cookie.substring(0, name.length + 1) === (name + "="))
+                        {
+                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                            break;
+                        }
+                    }
+                }
+                return cookieValue;
+            }
+            document.addEventListener("DOMContentLoaded",()=>{
+                let ele{{i.2}} = document.getElementsByClassName("{{i.2}}");
+                // console.log(ele{{i.2}})
+                let quantity{{i.2}}=Number.parseInt(ele{{i.2}}[2].getAttribute("value"));
+                let price{{i.2}}=Number.parseInt(ele{{i.2}}[1].innerHTML);
+                // console.log(price{{i.2}});
+                document.getElementById("itemSubTotal{{i.2}}").innerHTML="₹ "+(price{{i.2}}*quantity{{i.2}});
+                ele{{i.2}}[1].innerHTML="₹ "+price{{i.2}};
+                // console.log(plus{{i.2}})
+                function updateQuantity(e){
+                    console.log(e.srcElement.classList)
+                    let isPlus = e.srcElement.classList[0].includes("plus")
+                    e.preventDefault();
+                    console.log("In event listner");   
+                    let quantity{{i.2}} = ele{{i.2}}[2];
+                    amt = quantity{{i.2}}.getAttribute("value");
+                    if(isPlus)
+                    {
+                        amt++;
+                    }
+                    else
+                    {
+                        amt--;
+                    }
+                    document.getElementById("itemSubTotal{{i.2}}").innerHTML="₹ "+(price{{i.2}}*amt);
+                    quantity{{i.2}}.setAttribute("value",amt);
+                    let categoryId = document.getElementsByName("cat{{forloop.counter}}")[0].getAttribute("value")
+                    let subCategoryId = document.getElementsByName("subCat{{forloop.counter}}")[0].getAttribute("value")
+                    let productId = document.getElementsByName("pro{{forloop.counter}}")[0].getAttribute("value")
+                    console.log("Category Id = ",categoryId);
+                    console.log("SubCategory Id = ",subCategoryId);
+                    console.log("Product Id = ",productId);
+                    let purp ="2"
+                    fetch('/shop/cart',{
+                        method:'POST',
+                        headers:{
+                            "X-Requested-With": "XMLHttpRequest",
+                            "X-CSRFToken": getCookie("csrftoken"),
+                            'Content-Type':'application/json'
+                        },
+                        body:JSON.stringify({
+                            purpose:purp,
+                            quantity:amt,
+                            category:categoryId,
+                            subCategory:subCategoryId,
+                            product:productId
+                        })
+                    })
+                    .then((response)=>{
+                        return response.json();
+                    })
+                    .catch((error)=>{
+                        console.log("Got error")
+                    })
+                    
+                }
+                plus{{i.2}} = document.getElementsByClassName("plus{{i.2}}")[0];
+                minus{{i.2}}=document.getElementsByClassName("minus{{i.2}}")[0];
+                plus{{i.2}}.addEventListener('click',updateQuantity);
+                minus{{i.2}}.addEventListener('click',updateQuantity);
+            })
+        </script>
+        {% endfor %}
         <div class="row product">
             <div class="col item">
 
@@ -114,9 +147,9 @@
                     <h3>Final Price</h3>
                 </div>
                 <div class="finalPrice">
-                    <h3>₹ 100</h3>
-                    <h3>₹ 100</h3>
-                    <h3>₹ 100</h3>
+                    <h3 id="finalsubTotal">₹ {{finalSubtotal}}</h3>
+                    <h3 id="">₹ {{taxes}}</h3>
+                    <h3 id="finalTotal">₹ {{finalTotal}}</h3>
                 </div>
             </div>
         </div>
@@ -124,8 +157,9 @@
             <div class="col item">
 
             </div>
-            <di class="checkout">
-                <button type="submit">Proceed to Checkout</button>
+            <div class="checkout">
+                <input type="number" class="hidden" value="{{total}}">
+                <button type="submit" >Proceed to checkout</button>
             </div>
         </div>
     </form>
