@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="active_orders.css">
+</head>
+<body>
+    <div class="mainContainer">
+        <aside class="nav">
+            <div class="sidebar">
+                <ul class="sidebar__content">
+                    <li class="sidebar__content__item item-1">
+                        <img src="{% static 'caretaker/Company_logo.PNG' %}" class="sidebar__img" alt="" id="mainLogo">
+                        <a href="/shop/home"><figcaption>Flying Groceries</figcaption></a>
+                    </li>
+                    <li class="sidebar__content__item item-2">
+                        <img src="{% static 'caretaker/profile.png' %}" alt="" class="sidebar__img" id="profileImg">
+                        <a href="/caretaker/profile"><figcaption class="profileCap">Your Profile</figcaption></a>
+                    </li>
+                    <li class="sidebar__content__item item-2">
+                        <img src="{% static 'caretaker/user.png' %}" alt="" class="sidebar__img">
+                        <a href="/caretaker/approved"><figcaption>Current Orders</figcaption></a>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+        <div class="mainContent">
+            <table class="orders">
+                <thead class="headers">
+                    <div class="head">Assigned Orders (Current Date)</div>
+                </thead>
+                <tbody>
+                    <tr class="tableRow even">
+                        <th>S.No.</th>
+                        <th>Customer</th>
+                        <th>Location</th>
+                        <th>Order Date</th>
+                        <th>Delivery Status</th>
+                    </tr>
+                    <tr class="tableRow odd">
+                        <td>1</td>
+                        <td>Hello World</td>
+                        <td>Delhi</td>
+                        <td>23-03-2022</td>
+                        <td class="status"><span>Pending</span></td>
+                    </tr>
+                    <tr class="tableRow even">
+                        <td>2</td>
+                        <td>Bye World</td>
+                        <td>Mumbai</td>
+                        <td>24-03-2022</td>
+                        <td class="status"><span>Delivered</span></td>
+                    </tr>
+                    <tr class="tableRow odd">
+                        <td>3</td>
+                        <td>Ok World</td>
+                        <td>Mumbai</td>
+                        <td>25-03-2022</td>
+                        <td class="status"><span>Pending</span></td>
+                    </tr>
+                    <tr class="tableRow even">
+                        <td>4</td>
+                        <td>WOw World</td>
+                        <td>Delhi</td>
+                        <td>22-03-2022</td>
+                        <td class="status"><span>Delivered</span></td>
+                    </tr>
+                    <tr class="tableRow odd">
+                        <td>5</td>
+                        <td>Not Wow World</td>
+                        <td>Pondicherry</td>
+                        <td>23-03-2022</td>
+                        <td class="status"><span>Pending</span></td>
+                    </tr>
+                    <tr class="tableRow odd">
+                        <td>6</td>
+                        <td>Not Wow World</td>
+                        <td>Pondicherry</td>
+                        <td>23-03-2022</td>
+                        <td class="status"><span>Pending</span></td>
+                    </tr>
+                    <tr class="tableRow odd">
+                        <td>7</td>
+                        <td>Not Wow World</td>
+                        <td>Pondicherry</td>
+                        <td>23-03-2022</td>
+                        <td class="status"><span>Pending</span></td>
+                    </tr>
+                    <tr class="tableRow odd">
+                        <td>8</td>
+                        <td>Not Wow World</td>
+                        <td>Pondicherry</td>
+                        <td>23-03-2022</td>
+                        <td class="status"><span>Pending</span></td>
+                    </tr>
+                    <tr class="tableRow odd">
+                        <td>9</td>
+                        <td>Not Wow World</td>
+                        <td>Pondicherry</td>
+                        <td>23-03-2022</td>
+                        <td class="status"><span>Pending</span></td>
+                    </tr>
+                    <tr class="tableRow odd">
+                        <td>10</td>
+                        <td>Not Wow World</td>
+                        <td>Pondicherry</td>
+                        <td>23-03-2022</td>
+                        <td class="status"><span>Pending</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script>
+        createSpan=(choice)=>{
+            let span = document.createElement("span");
+            if(choice==1)
+            {
+                span.style.backgroundColor="#5affdd";
+                span.style.borderRadius="50%";
+                span.style.width="0.8em";
+                span.style.height="0.8em";
+                span.style.marginLeft="0.6em";
+                span.style.border="2px solid black";
+            }
+            else
+            {
+                span.style.backgroundColor="#21ff00";
+                span.style.borderRadius="50%";
+                span.style.width="0.8em";
+                span.style.height="0.8em";
+                span.style.marginLeft="0.6em";
+                span.style.border="2px solid black";
+            }
+            return span;
+        }
+        let status = document.getElementsByClassName("status");
+        for(let i of status)
+        {
+            let ele = i.firstChild;
+            let span="";
+            if(ele.innerHTML=="Pending")
+            {
+                let span=createSpan(1);
+                i.appendChild(span)
+            }
+            else
+            {
+                let span=createSpan(2);
+                i.appendChild(span);
+            }
+            // if(i.innerHTML === "Pending")
+            // {
+            //     i.appendChild(span1);
+            // }
+            // else
+            // {
+            //     i.appendChild(span2);
+            // }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+{% extends 'appusers/sidebar_customer.html' %}
+{% load static %}
+
+{% block scripts %}
+<link rel="stylesheet" href="{% static 'appusers/order_history.css' %}">
+{% endblock %}
+
+{% block body %}
+<div class="mainContent">
+    <h3 class="mainHeading">Past Orders</h3>
+    <div class="myContainer">
+        {% for i in order %}
+        <div class="cards">
+            <h3 class="orderHeading">Order {{forloop.counter}}</h3>
+            <ul class="innerContent">
+                {% for j in i %}
+                <li>
+                    <figure>
+                        <img src="{% static 'appusers/Fruits-and-Vegetables.jpg' %}" alt="">
+                    </figure>
+                    <div class="cardConent">
+                        <h3>{{j.4}}</h3>
+                        <h3>Quantity:{{j.3}}</h3>
+                    </div>
+                </li>
+                {% endfor %}
+                {% for k in date %}
+                {% if forloop.counter == forloop.parentloop.counter %}
+                <div class="btnClass">
+                    <h3>Order Date : {{k}}</h3>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

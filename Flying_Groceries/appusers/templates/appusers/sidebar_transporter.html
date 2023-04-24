@@ -19,14 +19,18 @@
                         <a href="/shop/home"><figcaption>Flying Groceries</figcaption></a>
                     </li>
                     <li class="sidebar__content__item item-2">
-                        <img src="{% static 'caretaker/user.png' %}" alt="" class="sidebar__img">
-                        <a href="/caretaker/requests"><figcaption>Your Profile</figcaption></a>
+                        <img src="{% static 'caretaker/profile.png' %}" alt="" class="sidebar__img" id="profileImg">
+                        <a href="/appusers/transporter/profile"><figcaption class="profileCap">Your Profile</figcaption></a>
                     </li>
                     <li class="sidebar__content__item item-2">
                         <img src="{% static 'caretaker/user.png' %}" alt="" class="sidebar__img">
-                        <a href="/caretaker/approved"><figcaption>Order History</figcaption></a>
+                        <a href="/appusers/transporter/orders"><figcaption>Current Orders</figcaption></a>
                     </li>
                 </ul>
+                <div class="logout">
+                    <img src="{% static 'caretaker/logout.png' %}" alt="" class="logoutimg">
+                    <a href="/appusers/transporter/logout"><figcaption>Logout</figcaption></a>
+                </div>
             </div>
         </aside>
         {% block body %} {% endblock %}

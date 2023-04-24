@@ -1,93 +1,87 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile Page</title>
-    <link rel="stylesheet" href="profile.css">
-</head>
-<body>
-    <div class="mainContainer">
-        <aside class="nav">
-            <div class="sidebar">
-                <ul class="sidebar__content">
-                    <li class="sidebar__content__item item-1">
-                        <img src="{% static 'caretaker/Company_logo.PNG' %}" class="sidebar__img" alt="" id="mainLogo">
-                        <a href="/shop/home"><figcaption>Flying Groceries</figcaption></a>
-                    </li>
-                    <li class="sidebar__content__item item-2">
-                        <img src="{% static 'caretaker/user.png' %}" alt="" class="sidebar__img">
-                        <a href="/caretaker/requests"><figcaption>Transporter-Requests</figcaption></a>
-                    </li>
-                    <li class="sidebar__content__item item-2">
-                        <img src="{% static 'caretaker/user.png' %}" alt="" class="sidebar__img">
-                        <a href="/caretaker/approved"><figcaption>Approved Transporters</figcaption></a>
-                    </li>
-                    <li class="sidebar__content__item item-3">
-                        <img src="{% static 'caretaker/graph.png' %}" alt="" class="sidebar__img" alt="">
-                        <a href="/caretaker/analytics"><figcaption>Analytics</figcaption></a>
-                    </li>
-                </ul>
+{% extends 'appusers/sidebar_customer.html' %}
+{% load static %}
+
+{% block scripts %}
+<link rel="stylesheet" href="{% static 'appusers/profile.css' %}">
+{% endblock %}
+
+{% block body %}
+<div class="mainContent">
+    <form action="" class="accountDetails" method="POST">
+        {% csrf_token %}
+        <div class="item pic">
+            <h3>Profile Picture</h3>
+            <div class="innerInfo">
+                <img src="{% static 'caretaker/user.png' %}" alt="User Profile Picture" class="profilePicture">
+                <button class="uploadPic btn">Upload Picture</button>
             </div>
-        </aside>
-        <div class="mainContent">
-            <form action="" class="accountDetails">
-                <div class="item pic">
-                    <h3>Profile Picture</h3>
-                    <div class="innerInfo">
-                        <img src="user.png" alt="User Profile Picture" class="profilePicture">
-                        <button class="uploadPic btn">Upload Picture</button>
-                    </div>
-                </div>
-                <div class="item personalInfo">
-                    <h3>Personal Information</h3>
-                    <div class="FirstName innerInfo">
-                        <label for="firstName">First Name</label>
-                        <input type="text" placeholder="First Name">
-                    </div>
-                    <div class="middleName innerInfo">
-                        <label for="middleName">Middle Name</label>
-                        <input type="text" placeholder="Middle Name">
-                    </div>
-                    <div class="lastName innerInfo">
-                        <label for="lastName">Last Name</label>
-                        <input type="text" placeholder="Last Name">
-                    </div>
-                </div>
-                <div class="item AccountInformation">
-                    <h3>Account Information</h3>
-                    <div class="Username innerInfo">
-                        <label for="firstName">Username</label>
-                        <input type="text" placeholder="Username">
-                    </div>
-                    <div class="password innerInfo">
-                        <label for="middleName">Password</label>
-                        <input type="password" placeholder="Password">
-                    </div>
-                    <div class="phoneNumber innerInfo">
-                        <label for="phoneNumber">Phone Number</label>
-                        <input type="number" placeholder="Phone Number" id="phoneNumber">
-                    </div>
-                </div>
-                <div class="item deliveryInfo">
-                    <h3>Delivery Information</h3>
-                    <div class="innerInfo">
-                        <label for="pincode">Pincode</label>
-                        <input type="text" placeholder="Pincode" id="pincode">
-                    </div>
-                    <div class="innerInfo">
-                        <label for="city">City</label>
-                        <input type="text" id="city" placeholder="City">
-                    </div>
-                    <div class="innerInfo">
-                        <label for="locality">Locality</label>
-                        <input type="text" placeholder="Locality">
-                    </div>
-                    <button class="btn">Save Changes</button>
-                </div>
-            </form>
         </div>
-    </div>
-</body>
-</html>
+        <div class="item personalInfo">
+            <h3>Personal Information</h3>
+            <div class="FirstName innerInfo">
+                <label for="firstName">First Name</label>
+                <input type="text" placeholder="First Name" id="firstName" name="firstName" value="{{firstName}}">
+            </div>
+            <div class="MiddleName innerInfo">
+                <label for="middleName">Middle Name</label>
+                <input type="text" placeholder="Middle Name" id="middleName" name="middleName" value ="{{middleName}}">
+            </div>
+            <div class="LastName innerInfo">
+                <label for="lastName">Last Name</label>
+                <input type="text" placeholder="Last Name" id="lastName" name="lastName" value="{{lastName}}">
+            </div>
+        </div>
+        <div class="item AccountInformation">
+            <h3>Account Information</h3>
+            <div class="CustomerId innerInfo">
+                <label for="customerId">Customer Id</label>
+                <input type="number" placeholder="Customer Id" name="customerId" id="customerId" value="{{id}}">
+            </div>
+            <div class="Username innerInfo">
+                <label for="username">Username</label>
+                <input type="text" placeholder="Username" id="username" name="username" value="{{username}}">
+            </div>
+            <div class="Password innerInfo">
+                <label for="password">Password</label>
+                <input type="password" placeholder="password" id="password" name="password" value="{{password}}">
+            </div>
+            <div class="PhoneNumber innerInfo">
+                <label for="phoneNumber">Phone Number</label>
+                <input type="number" placeholder="Phone Number" id="phoneNumber" name="phoneNumber" value="{{phoneNumber}}">
+            </div>
+        </div>
+        <div class="item employeeInfo">
+            <h3>Delivery Information</h3>
+            <div class="HouseNumber innerInfo">
+                <label for="houseNumber">House Number</label>
+                <input type="text" placeholder="House Number" id="houseNumber" name="houseNumber" value="{{houseNumber}}">
+            </div>
+            <div class="Pincode innerInfo">
+                <label for="pincode">Pincode</label>
+                <input type="text" placeholder="Pincode" id="pincode" name="pincode" value="{{pincode}}">
+            </div>
+            <div class="City innerInfo">
+                <label for="city">City</label>
+                <input type="text" placeholder="City" id="city" name="city" value="{{city}}">
+            </div>
+            <div class="Locality innerInfo">
+                <label for="locality">Locality</label>
+                <input type="text" placeholder="Locality" id="locality" name="locality" value="{{locality}}">
+            </div>
+            <button class="btn">Save Changes</button>
+        </div>
+    </form>
+</div>
+<script>
+    let id = document.getElementById("customerId")
+    id.onclick=()=>{
+        id.disabled=true;
+        alert("Not Allowed")
+    }
+    let accountDetails = document.getElementsByClassName("accountDetails")[0];
+    accountDetails.onsubmit=()=>{
+        id.disabled=false;
+        return true;
+    }
+</script>
+{% endblock %}

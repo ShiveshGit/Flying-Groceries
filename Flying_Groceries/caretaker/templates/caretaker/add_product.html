@@ -1,0 +1,67 @@
+{% extends 'caretaker/sidebar.html' %}
+{% load static %}
+
+{% block scripts %}
+    <link rel="stylesheet" href="{% static 'caretaker/add_product.css' %}">
+{% endblock %}
+
+
+{% block body %}
+    <div class="mainContent">
+        <header>
+            <img src="{% static 'caretaker/Company_logo.PNG' %}" class = "logo" alt="">
+        </header>
+        <form action="" method="POST" class="customerLogin">
+            {% csrf_token %}
+            <div class="container">
+                <h3>Product Registration</h3>
+                <p>{{message}}</p>
+                <div class="CategoryId">
+                    <label for="categoryId">Category Id</label>
+                    <input type="number" placeholder="Category Id" id="categoryId" name="categoryId" required>
+                </div>
+                <div class="SubCategoryId">
+                    <label for="subCategoryId">Sub Category Id</label>
+                    <input type="number" placeholder="Sub Category Id" id="subCategoryId" name="subCategoryId" required>
+                </div>
+                <div class="ProductId">
+                    <label for="productId">Product Id</label>
+                    <input type="number" placeholder="Product Id" id="productId" name="productId" required>
+                </div>
+                <div class="ProductName">
+                    <label for="productName">Product Name</label>
+                    <input type="text" placeholder="Product Name" id="productName" name="productName" required>
+                </div>
+                <div class="Specification">
+                    <label for="specification">Specification</label>
+                    <input type="text" placeholder="Specification" id="specification" name="specification" required>
+                </div>
+                <div class="CompanyName">
+                    <label for="companyName">Company Name</label>
+                    <input type="text" placeholder="Company Name" id="companyName" name="companyName" required>
+                </div>
+                <div class="Discount">
+                    <label for="discount">Discount Percentage</label>
+                    <input type="number" placeholder="Discount Percentage (Write 0 for no discount)" id="discount" name="discount" required>
+                </div>
+                <div class="MRP">
+                    <label for="mrp">MRP</label>
+                    <input type="number" placeholder="MRP" id="mrp" name="mrp" required>
+                </div>
+                <div class="ManufacturingDate">
+                    <label for="manufacturingDate">Manufacturing Date</label>
+                    <input type="date" placeholder="Manufacturing Date" id="manufacturingDate" name="manufacturingDate" required>
+                </div>
+                <div class="ExpiryDate">
+                    <label for="manufacturingDate">Expiry Date</label>
+                    <input type="date" placeholder="Expiry Date" id="expiryDate" name="expiryDate" required>
+                </div>
+                <div class="Quantity">
+                    <label for="quantity">Quantity</label>
+                    <input type="number" placeholder="Stock" id="quantity" name="quantity" required>
+                </div>
+                <button type="submit" id="addButton">Add Product</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

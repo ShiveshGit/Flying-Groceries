@@ -1,0 +1,76 @@
+{% extends 'appusers/sidebar_transporter.html' %}
+{% load static %}
+
+{% block scripts %}
+<link rel="stylesheet" href="{% static 'appusers/active_orders.css' %}">
+{% endblock %}
+
+{% block body %}
+<div class="mainContent">
+    <table class="orders">
+        <thead class="headers">
+            <div class="head">Assigned Orders {{currDate}}</div>
+        </thead>
+            <tbody>
+                <tr class="tableRow">
+                    <th>Order Id</th>
+                    <th>Customer</th>
+                    <th>Location</th>
+                    <th>Order Date</th>
+                    <th>Delivery Status</th>
+                </tr>
+                {% for i in orders %}
+                <tr class="tableRow">
+                    <td>{{i.4}}</td>
+                    <td>{{i.1}}</td>
+                    <td>{{i.2}}</td>
+                    <td>{{i.0}}</td>
+                    <td class="status"><span>{{i.3}}</span></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+<script>
+    createSpan=(choice)=>{
+        let span = document.createElement("span");
+        if(choice==1)
+        {
+            span.style.backgroundColor="#5affdd";
+            span.style.borderRadius="50%";
+            span.style.width="0.8em";
+            span.style.height="0.8em";
+            span.style.marginLeft="0.6em";
+            span.style.border="2px solid black";
+        }
+        else
+        {
+            span.style.backgroundColor="#21ff00";
+            span.style.borderRadius="50%";
+            span.style.width="0.8em";
+            span.style.height="0.8em";
+            span.style.marginLeft="0.6em";
+            span.style.border="2px solid black";
+        }
+        return span;
+    }
+    let status = document.getElementsByClassName("status");
+    for(let i of status)
+    {
+        let ele = i.firstChild;
+        let span="";
+        if(ele.innerHTML=="1")
+        {
+            console.log("Here")
+            let span=createSpan(1);
+            i.appendChild(span)
+        }
+        else if(ele.innerHTML=="2")
+        {
+            let span=createSpan(2);
+            i.appendChild(span);
+        }
+    }
+</script>
+{% endblock %}

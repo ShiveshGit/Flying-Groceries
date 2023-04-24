@@ -110,36 +110,66 @@ def removeProductFromCart(catId,subCatId,prodId,userId):
     values = (userId,catId,subCatId,prodId)
     mycursor.execute(sqlFormula2,values)
     mydb.commit()
-    sqlFormula3 ='''
-                CREATE TRIGGER del_and_insert_cart
-            AFTER DELETE
-            ON Cart
-            FOR EACH ROW
-            BEGIN
-            SELECT TransporterId INTO @Transporter_Id FROM Transporter WHERE Transporter.ActiveStatus = 1 and Transporter.currentActiveOrders<10 ORDER BY TransporterId LIMIT 1;
-            SELECT CurrentActiveOrders INTO @Active_Orders FROM Transporter WHERE Transporter.TransporterId = @Transporter_Id;
-            SELECT QUANTITY INTO @Prod_Quantity FROM PRODUCT WHERE Product.ProductId = OLD.ProductId and Product.CategoryId = OLD.CategoryID and Product.SubCategoryId = OLD.SubCategoryId;
-            SELECT COUNT(ProductId) INTO @TOT_PROD FROM Cart WHERE CustomerId = OLD.CustomerId Group By CustomerId;
+    # sqlFormula3 ='''
+    #        CREATE TRIGGER del_and_insert_cart
+   #         AFTER DELETE
+    #        ON Cart
+    #        FOR EACH ROW
+    #        BEGIN
+    #        SELECT TransporterId INTO @Transporter_Id FROM Transporter WHERE Transporter.ActiveStatus = 1 and Transporter.currentActiveOrders<10 ORDER BY TransporterId LIMIT 1;
+    #        SELECT CurrentActiveOrders INTO @Active_Orders FROM Transporter WHERE Transporter.TransporterId = @Transporter_Id;
+    #        SELECT QUANTITY INTO @Prod_Quantity FROM PRODUCT WHERE Product.ProductId = OLD.ProductId and Product.CategoryId = OLD.CategoryID and Product.SubCategoryId = OLD.SubCategoryId;
+    #        SELECT COUNT(ProductId) INTO @TOT_PROD FROM Cart WHERE CustomerId = OLD.CustomerId Group By CustomerId;
 
-            if @Prod_Quantity>OLD.Quantity THEN
-                INSERT INTO Delivery (PaymentId,CustomerId,TransporterId,CategoryId,SubCategoryId,ProductId,Quantity,PaymentType,CheckOutDateAndTime) VALUES (2000+Old.CustomerId,Old.CustomerId,@Transporter_Id,OLD.CategoryId,OLD.SubCategoryId,OLD.ProductId,OLD.Quantity,"PayTM",NOW());
+    #        if @Prod_Quantity>OLD.Quantity THEN
+    #            INSERT INTO Delivery (PaymentId,CustomerId,TransporterId,CategoryId,SubCategoryId,ProductId,Quantity,PaymentType,CheckOutDateAndTime,DeliveryStatus) VALUES (2000+Old.CustomerId,Old.CustomerId,@Transporter_Id,OLD.CategoryId,OLD.SubCategoryId,OLD.ProductId,OLD.Quantity,"PayTM",NOW(),1);
 
-                UPDATE Transporter
-                SET CurrentActiveOrders = CurrentActiveOrders +1
-                WHERE CurrentActiveOrders<10 and Transporter.TransporterId = @Transporter_Id;
+    #            UPDATE Transporter
+    #            SET CurrentActiveOrders = CurrentActiveOrders +1
+    #            WHERE CurrentActiveOrders<10 and Transporter.TransporterId = @Transporter_Id;
                 
-                UPDATE Product
-                SET Quantity = Quantity - OLD.Quantity
-                WHERE Product.ProductId = OLD.ProductId and Product.CategoryId = OLD.CategoryId and Product.SubcategoryId = OLD.subCategoryId ;
+    #            UPDATE Product
+    #            SET Quantity = Quantity - OLD.Quantity
+    #            WHERE Product.ProductId = OLD.ProductId and Product.CategoryId = OLD.CategoryId and Product.SubcategoryId = OLD.subCategoryId ;
 
-                if @Active_Orders =9 THEN
+#                if @Active_Orders =9 THEN
+ #                   UPDATE Transporter
+ #                   SET ActiveStatus = 0
+  #                  WHERE TransporterId  = @Transporter_Id;
+  #              end if;
+  #          end if;
+  #          end
+  #      '''
+    sqlFormula='''
+                CREATE TRIGGER del_and_insert_cart
+                BEFORE DELETE
+                ON Cart
+                FOR EACH ROW
+                BEGIN
+                SELECT TransporterId INTO @Transporter_Id FROM Transporter WHERE Transporter.ActiveStatus = 1 and Transporter.currentActiveOrders<=10 ORDER BY TransporterId LIMIT 1;
+                SELECT CurrentActiveOrders INTO @Active_Orders FROM Transporter WHERE Transporter.TransporterId = @Transporter_Id;
+                SELECT QUANTITY INTO @Prod_Quantity FROM PRODUCT WHERE Product.ProductId = OLD.ProductId and Product.CategoryId = OLD.CategoryID and Product.SubCategoryId = OLD.SubCategoryId;
+                SELECT COUNT(ProductId) INTO @TOT_PROD FROM Cart WHERE CustomerId = OLD.CustomerId Group By CustomerId;
+                if @Prod_Quantity>OLD.Quantity THEN
+                    INSERT INTO Delivery (PaymentId,CustomerId,TransporterId,CategoryId,SubCategoryId,ProductId,Quantity,PaymentType,CheckOutDateAndTime,DeliveryStatus) VALUES (2000+Old.CustomerId,Old.CustomerId,@Transporter_Id,OLD.CategoryId,OLD.SubCategoryId,OLD.ProductId,OLD.Quantity,"PayTM",NOW(),1);
+	                
                     UPDATE Transporter
-                    SET ActiveStatus = 0
-                    WHERE TransporterId  = @Transporter_Id;
+	                SET CurrentActiveOrders = CurrentActiveOrders +1
+    	            WHERE CurrentActiveOrders<=10 and Transporter.TransporterId = @Transporter_Id;
+	
+                    UPDATE Product
+	                SET Quantity = Quantity - OLD.Quantity
+	                WHERE Product.ProductId = OLD.ProductId and Product.CategoryId = OLD.CategoryId and Product.SubcategoryId = OLD.subCategoryId ;
+
+	                if @Active_Orders >=9 THEN
+                        UPDATE Transporter
+		                SET ActiveStatus = 0
+		                WHERE TransporterId  = @Transporter_Id;
+	                end if;
                 end if;
-            end if;
-            end'''
-    mycursor.execute(sqlFormula3)
+                end 
+                '''
+    mycursor.execute(sqlFormula)
     mydb.commit()
 
 def checkOutCart(userId):

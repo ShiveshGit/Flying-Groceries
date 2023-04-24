@@ -1,0 +1,102 @@
+{% extends 'appusers/sidebar_customer.html' %}
+{% load static %}
+
+{% block scripts %}
+<link rel="stylesheet" href="{% static 'appusers/order_history.css' %}">
+{% endblock %}
+
+{% block body %}
+<div class="mainContent">
+    <h3 class="mainHeading">Ongoing Orders</h3>
+    <div class="myContainer">
+        {% for i in order %}
+        <div class="cards">
+            <h3 class="orderHeading">Order</h3>
+            <div class="innerMain">
+                <ul class="innerContent">
+                    {% for j in i %}
+                    <li>
+                        <figure>
+                            <img src="{% static 'appusers/Fruits-and-Vegetables.jpg' %}" alt="">
+                        </figure>
+                        <div class="cardConent">
+                            <h3>{{j.4}}</h3>
+                            <h3>Quantity:{{j.3}}</h3>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% for k in date %}
+                {% if forloop.counter == forloop.parentloop.counter %}
+                <div class="btnClass">
+                    <button class="cancelButton" type="submit" id="{{k}}">Cancel Order</button>
+                    <h3 class="hidden {{k}}">{{i}}</h3>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<script>
+    var hidden = document.getElementsByClassName("hidden");
+    var cancelButton = document.getElementsByClassName("cancelButton");
+    x=(e)=>{
+        let checkoutDate = e.target.id;
+        var dataSent=null;
+        for(let i of hidden)
+        {
+            for(let j of i.classList)
+            {
+                console.log(j)
+                if(j==e.target.id)
+                {
+                    dataSent=i.innerHTML;
+                }
+            }
+        }
+        function getCookie(name)
+        {
+            let cookieValue = null;
+            if(document.cookie && document.cookie !== "")
+            {
+                const cookies  = document.cookie.split(";");
+                for(let i=0;i<cookies.length;i++)
+                {
+                    const cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + "="))
+                    {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+        fetch('/appusers/activeorders',{
+            method:'POST',
+            headers:{
+                        "X-Requested-With": "XMLHttpRequest",
+                        "X-CSRFToken": getCookie("csrftoken"),
+                        'Content-Type':'application/json'
+            },
+            body:JSON.stringify({
+                myStr:dataSent,
+                checkoutDate:checkoutDate
+            })
+        })
+        .then((response)=>{
+            return response.json();
+        })
+        .catch((error)=>{
+            console.log(error)
+            console.log("Got error")
+        })            
+    }
+    for(let i of cancelButton)
+    {
+        i.addEventListener('click',x);
+    }
+</script>
+{% endblock %}

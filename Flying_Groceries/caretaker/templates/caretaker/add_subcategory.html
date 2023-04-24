@@ -1,0 +1,35 @@
+{% extends 'caretaker/sidebar.html' %}
+{% load static %}
+
+{% block scripts %}
+    <link rel="stylesheet" href="{% static 'caretaker/add_product.css' %}">
+{% endblock %}
+
+
+{% block body %}
+    <div class="mainContent">
+        <header>
+            <img src="{% static 'caretaker/Company_logo.PNG' %}" class = "logo" alt="">
+        </header>
+        <form action="" method="POST" class="customerLogin">
+            {% csrf_token %}
+            <div class="container">
+                <h3>Sub Category Registration</h3>
+                <p>{{message}}</p>
+                <div class="CategoryId">
+                    <label for="categoryId">Category Id</label>
+                    <input type="number" placeholder="Category Id" id="categoryId" name="categoryId" required>
+                </div>
+                <div class="SubCategoryId">
+                    <label for="subCategoryId">Sub Category Id</label>
+                    <input type="number" placeholder="Sub Category Id" id="subCategoryId" name="subCategoryId" required>
+                </div>
+                <div class="SubCategoryName">
+                    <label for="subCategoryName">Sub Category Name</label>
+                    <input type="text" placeholder="Sub Category Name" id="subCategoryName" name="subCategoryName" required>
+                </div>
+                <button type="submit" id="addButton">Confirm Changes</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

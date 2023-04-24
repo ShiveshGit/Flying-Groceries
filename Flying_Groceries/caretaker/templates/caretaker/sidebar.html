@@ -18,6 +18,10 @@
                         <img src="{% static 'caretaker/Company_logo.PNG' %}" class="sidebar__img" alt="" id="mainLogo">
                         <a href="/shop/home"><figcaption>Flying Groceries</figcaption></a>
                     </li>
+                    <li class="sidebar__content__item item-5">
+                        <img src="{% static 'caretaker/profile.png' %}" alt="" class="sidebar__img" id="profileImg">
+                        <a href="/caretaker/profile"><figcaption class="profileCap">Your Profile</figcaption></a>
+                    </li>
                     <li class="sidebar__content__item item-2">
                         <img src="{% static 'caretaker/user.png' %}" alt="" class="sidebar__img">
                         <a href="/caretaker/requests"><figcaption>Transporter-Requests</figcaption></a>
@@ -31,8 +35,16 @@
                         <a href="/caretaker/analytics"><figcaption>Analytics</figcaption></a>
                     </li>
                     <li class="sidebar__content__item item-4">
-                        <img src="{% static 'caretaker/profile.png' %}" alt="" class="sidebar__img" id="profileImg">
-                        <a href="/caretaker/profile"><figcaption class="profileCap">Your Profile</figcaption></a>
+                        <div class="inventory">
+                            <img src="{% static 'caretaker/graph.png' %}" alt="" class="sidebar__img" alt="">
+                            <figcaption>Inventory</figcaption>
+                        </div>
+                        <ul class="manageInventory">
+                            <li><a href="/caretaker/inventory/addCategory">Add Category</a></li>
+                            <li><a href="/caretaker/inventory/addSubCategory">Add SubCategory</a></li>
+                            <li><a href="/caretaker/inventory/addProduct">Add Product</a></li>
+                            <li><a>Manage Products</a></li>
+                        </ul>
                     </li>
                 </ul>
                 <div class="logout">
@@ -43,5 +55,21 @@
         </aside>
         {% block body %} {% endblock %}
     </div>
+    <script>
+        let inventory = document.getElementsByClassName("inventory")[0];
+        let manageInventory = document.getElementsByClassName("manageInventory")[0];
+        inventory.onmouseover=(e)=>{
+                inventory.style.display="none";
+                manageInventory.style.display ="block";
+        }
+        manageInventory.onmouseover=(e)=>{
+            inventory.style.display="none";
+            manageInventory.style.display ="block";
+        }
+        manageInventory.onmouseout=(e)=>{
+            manageInventory.style.display="none";
+            inventory.style.display="flex";
+        }
+    </script>
 </body>
 </html>

@@ -148,6 +148,75 @@ def getAdminId(username):
     myres = mycursor.fetchall()
     return myres
 
+
+def getCategories():
+    sqlFormula = "SELECT * FROM Category"
+    mycursor.execute(sqlFormula)
+    myres = mycursor.fetchall()
+    return myres
+
+def getSubCategories(categoryId):
+    sqlFormula = "SELECT CategoryId, SubCategoryId FROM SubCategory WHERE CategoryId = %s"
+    values = (categoryId,)
+    mycursor.execute(sqlFormula,values)
+    myres = mycursor.fetchall()
+    return myres
+
+def addProduct(categoryId,subCategoryId,productId,productName,specification,companyName,discount,mrp,manufacturing_date,expiry_date,quantity):
+    try:
+        sqlFormula ='''
+                        INSERT INTO Product (CategoryId,SubCategoryId,ProductId,ProductName,specification,CompanyName,discount,mrp,ManufacturingDate,ExpiryDate,Quantity) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
+                    '''
+        values = (categoryId,subCategoryId,productId,productName,specification,companyName,discount,mrp,manufacturing_date,expiry_date,quantity)
+        mycursor.execute(sqlFormula,values)
+        if manufacturing_date>expiry_date:
+            raise Exception("Manufacturing date cannot be before the expiry date")
+        mydb.commit()
+        return 1
+    except mysql.connector.Error as error:
+        mydb.rollback()
+        return -1
+    except Exception as e:
+        mydb.rollback()
+        return 2
+    
+def addCategory(categoryId,categoryName):
+    try:
+        sqlFormula='''
+                        INSERT INTO Category (CategoryId,CategoryName) VALUES (%s,%s)
+                    '''
+        values=(categoryId,categoryName)
+        mycursor.execute(sqlFormula,values)
+        mydb.commit()
+        return 1
+    except mysql.connector.Error as error:
+        return -1
+    
+def addSubCategory(categoryId,subCategoryId,subCategoryName):
+    try:
+        sqlFormula='''
+                        INSERT INTO SubCategory (CategoryId,SubCategoryId,SubCategoryName) VALUES (%s,%s,%s)
+                    '''
+        values = (categoryId,subCategoryId,subCategoryName)
+        mycursor.execute(sqlFormula,values)
+        mydb.commit()
+        return 1
+    except mysql.connector.Error as error:
+        return -1
+
+def getTransporterInfo():
+    sqlFormula = "SELECT MAX(TransporterId) FROM Transporter"
+    mycursor.execute(sqlFormula)
+    myres = mycursor.fetchall()
+    myvalues=myres[0]
+    sqlFormula = "SELECT Username,UserPassword FROM Transporter WHERE TransporterId = %s"
+    mycursor.execute(sqlFormula,myvalues)
+    myres = mycursor.fetchall()
+    return myres[0]
+
 mycursor = mydb.cursor()
-analysis = getOrderAnalysis()
-print(analysis)
+# analysis = getOrderAnalysis()
+info = getTransporterInfo()
+print(info)
+# print(analysis)
+

@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order History</title>
+    {% load static %}
+    <link rel="stylesheet" href="order_history.css">
+</head>
+<body>
+    <div class="mainContainer">
+        <aside class="nav">
+            <div class="sidebar">
+                <ul class="sidebar__content">
+                    <li class="sidebar__content__item item-1">
+                        <img src="{% static 'caretaker/Company_logo.PNG' %}" class="sidebar__img" alt="" id="mainLogo">
+                        <a href="/shop/home"><figcaption>Flying Groceries</figcaption></a>
+                    </li>
+                    <li class="sidebar__content__item item-2">
+                        <img src="{% static 'caretaker/user.png' %}" alt="" class="sidebar__img">
+                        <a href="/caretaker/requests"><figcaption>Order History</figcaption></a>
+                    </li>
+                    <li class="sidebar__content__item item-4">
+                        <img src="{% static 'caretaker/profile.png' %}" alt="" class="sidebar__img" id="profileImg">
+                        <a href="/appusers/customer/profile"><figcaption class="profileCap">Your Profile</figcaption></a>
+                    </li>
+                </ul>
+                <div class="logout">
+                    <img src="{% static 'caretaker/logout.png' %}" alt="" class="logoutimg">
+                    <a href="/appusers/customer/logout"><figcaption>Logout</figcaption></a>
+                </div>
+            </div>
+        </aside>
+        <div class="mainContent">
+            <h3 class="mainHeading">Ongoing Orders</h3>
+            <div class="myContainer">
+                <div class="cards">
+                    <h3 class="orderHeading">Random Person</h3>
+                    <ul class="innerContent">
+                        <li>
+                            <figure>
+                                <img src="Fruits-and-Vegetables.jpg" alt="">
+                            </figure>
+                            <div class="cardConent">
+                                <h3>Item Name</h3>
+                                <h3>Quantity</h3>
+                            </div>
+                        </li>
+                        <li>
+                            <figure>
+                                <img src="Fruits-and-Vegetables.jpg" alt="">
+                            </figure>
+                            <div class="cardConent">
+                                <h3>Item Name</h3>
+                                <h3>Quantity</h3>
+                            </div>
+                        </li>
+                        <li>
+                            <figure>
+                                <img src="Fruits-and-Vegetables.jpg" alt="">
+                            </figure>
+                            <div class="cardConent">
+                                <h3>Item Name</h3>
+                                <h3>Quantity</h3>
+                            </div>
+                        </li>
+                        <li class="btnClass">
+                            <button id="1" class="cancelButton">Cancel Order</button>
+                        </li>
+                    </ul>
+                </div>
+                <div class="cards">
+                    <h3 class="orderHeading">Random Person</h3>
+                    <ul class="innerContent">
+                        <li>
+                            <figure>
+                                <img src="Fruits-and-Vegetables.jpg" alt="">
+                            </figure>
+                            <div class="cardConent">
+                                <h3>Item Name</h3>
+                                <h3>Quantity</h3>
+                            </div>
+                        </li>
+                        <li>
+                            <figure>
+                                <img src="Fruits-and-Vegetables.jpg" alt="">
+                            </figure>
+                            <div class="cardConent">
+                                <h3>Item Name</h3>
+                                <h3>Quantity</h3>
+                            </div>
+                        </li>
+                        <li>
+                            <figure>
+                                <img src="Fruits-and-Vegetables.jpg" alt="">
+                            </figure>
+                            <div class="cardConent">
+                                <h3>Item Name</h3>
+                                <h3>Quantity</h3>
+                            </div>
+                        </li>
+                        <li class="btnClass">
+                            <button id="1" class="cancelButton">Cancel Order</button>
+                        </li>
+                    </ul>
+                </div>
+                <div class="cards">
+                    <h3 class="orderHeading">Random Person 1</h3>
+                    <ul class="innerContent">
+                        <li>
+                            <figure>
+                                <img src="Fruits-and-Vegetables.jpg" alt="">
+                            </figure>
+                            <div class="cardConent">
+                                <h3>Item Name</h3>
+                                <h3>Quantity</h3>
+                            </div>
+                        </li>
+                        <li>
+                            <figure>
+                                <img src="Fruits-and-Vegetables.jpg" alt="">
+                            </figure>
+                            <div class="cardConent">
+                                <h3>Item Name</h3>
+                                <h3>Quantity</h3>
+                            </div>
+                        </li>
+                        <li>
+                            <figure>
+                                <img src="Fruits-and-Vegetables.jpg" alt="">
+                            </figure>
+                            <div class="cardConent">
+                                <h3>Item Name</h3>
+                                <h3>Quantity</h3>
+                            </div>
+                        </li>
+                        <li class="btnClass">
+                            <button id="1" class="cancelButton">Cancel Order</button>
+                        </li>
+                    </ul>
+                </div>
+                <div class="cards">
+                    <h3 class="orderHeading">Random Person 1</h3>
+                    <ul class="innerContent">
+                        <li>
+                            <figure>
+                                <img src="Fruits-and-Vegetables.jpg" alt="">
+                            </figure>
+                            <div class="cardConent">
+                                <h3>Item Name</h3>
+                                <h3>Quantity</h3>
+                            </div>
+                        </li>
+                        <li>
+                            <figure>
+                                <img src="Fruits-and-Vegetables.jpg" alt="">
+                            </figure>
+                            <div class="cardConent">
+                                <h3>Item Name</h3>
+                                <h3>Quantity</h3>
+                            </div>
+                        </li>
+                        <li>
+                            <figure>
+                                <img src="Fruits-and-Vegetables.jpg" alt="">
+                            </figure>
+                            <div class="cardConent">
+                                <h3>Item Name</h3>
+                                <h3>Quantity</h3>
+                            </div>
+                        </li>
+                        <li class="btnClass">
+                            <button id="1" class="cancelButton">Cancel Order</button>
+                        </li>
+                    </ul>
+                </div>
+                <div class="cards">
+                    <h3 class="orderHeading">Random Person 1</h3>
+                    <ul class="innerContent">
+                        <li>
+                            <figure>
+                                <img src="Fruits-and-Vegetables.jpg" alt="">
+                            </figure>
+                            <div class="cardConent">
+                                <h3>Item Name</h3>
+                                <h3>Quantity</h3>
+                            </div>
+                        </li>
+                        <li>
+                            <figure>
+                                <img src="Fruits-and-Vegetables.jpg" alt="">
+                            </figure>
+                            <div class="cardConent">
+                                <h3>Item Name</h3>
+                                <h3>Quantity</h3>
+                            </div>
+                        </li>
+                        <li>
+                            <figure>
+                                <img src="Fruits-and-Vegetables.jpg" alt="">
+                            </figure>
+                            <div class="cardConent">
+                                <h3>Item Name</h3>
+                                <h3>Quantity</h3>
+                            </div>
+                        </li>
+                        <li class="btnClass">
+                            <button id="1" class="cancelButton">Cancel Order</button>
+                        </li>
+                    </ul>
+                </div>
+                <div class="cards">
+                    <h3 class="orderHeading">Random Person 1</h3>
+                    <ul class="innerContent">
+                        <li>
+                            <figure>
+                                <img src="Fruits-and-Vegetables.jpg" alt="">
+                            </figure>
+                            <div class="cardConent">
+                                <h3>Item Name</h3>
+                                <h3>Quantity</h3>
+                            </div>
+                        </li>
+                        <li>
+                            <figure>
+                                <img src="Fruits-and-Vegetables.jpg" alt="">
+                            </figure>
+                            <div class="cardConent">
+                                <h3>Item Name</h3>
+                                <h3>Quantity</h3>
+                            </div>
+                        </li>
+                        <li>
+                            <figure>
+                                <img src="Fruits-and-Vegetables.jpg" alt="">
+                            </figure>
+                            <div class="cardConent">
+                                <h3>Item Name</h3>
+                                <h3>Quantity</h3>
+                            </div>
+                        </li>
+                        <li class="btnClass">
+                            <button id="1" class="cancelButton">Cancel Order</button>
+                        </li>
+                    </ul>
+                </div>
+                <div class="cards">
+                    <h3 class="orderHeading">Random Person 1</h3>
+                    <ul class="innerContent">
+                        <li>
+                            <figure>
+                                <img src="Fruits-and-Vegetables.jpg" alt="">
+                            </figure>
+                            <div class="cardConent">
+                                <h3>Item Name</h3>
+                                <h3>Quantity</h3>
+                            </div>
+                        </li>
+                        <li>
+                            <figure>
+                                <img src="Fruits-and-Vegetables.jpg" alt="">
+                            </figure>
+                            <div class="cardConent">
+                                <h3>Item Name</h3>
+                                <h3>Quantity</h3>
+                            </div>
+                        </li>
+                        <li>
+                            <figure>
+                                <img src="Fruits-and-Vegetables.jpg" alt="">
+                            </figure>
+                            <div class="cardConent">
+                                <h3>Item Name</h3>
+                                <h3>Quantity</h3>
+                            </div>
+                        </li>
+                        <li class="btnClass">
+                            <button id="1" class="cancelButton">Cancel Order</button>
+                        </li>
+                    </ul>
+                </div>
+                <div class="cards">
+                    <h3 class="orderHeading">Random Person 1</h3>
+                    <ul class="innerContent">
+                        <li>
+                            <figure>
+                                <img src="Fruits-and-Vegetables.jpg" alt="">
+                            </figure>
+                            <div class="cardConent">
+                                <h3>Item Name</h3>
+                                <h3>Quantity</h3>
+                            </div>
+                        </li>
+                        <li>
+                            <figure>
+                                <img src="Fruits-and-Vegetables.jpg" alt="">
+                            </figure>
+                            <div class="cardConent">
+                                <h3>Item Name</h3>
+                                <h3>Quantity</h3>
+                            </div>
+                        </li>
+                        <li>
+                            <figure>
+                                <img src="Fruits-and-Vegetables.jpg" alt="">
+                            </figure>
+                            <div class="cardConent">
+                                <h3>Item Name</h3>
+                                <h3>Quantity</h3>
+                            </div>
+                        </li>
+                        <li class="btnClass">
+                            <button id="1" class="cancelButton">Cancel Order</button>
+                        </li>
+                    </ul>
+                </div>
+                <div class="cards">
+                    <h3 class="orderHeading">Random Person</h3>
+                    <ul class="innerContent">
+                        <li>
+                            <figure>
+                                <img src="Fruits-and-Vegetables.jpg" alt="">
+                            </figure>
+                            <div class="cardConent">
+                                <h3>Item Name</h3>
+                                <h3>Quantity</h3>
+                            </div>
+                        </li>
+                        <li>
+                            <figure>
+                                <img src="Fruits-and-Vegetables.jpg" alt="">
+                            </figure>
+                            <div class="cardConent">
+                                <h3>Item Name</h3>
+                                <h3>Quantity</h3>
+                            </div>
+                        </li>
+                        <li>
+                            <figure>
+                                <img src="Fruits-and-Vegetables.jpg" alt="">
+                            </figure>
+                            <div class="cardConent">
+                                <h3>Item Name</h3>
+                                <h3>Quantity</h3>
+                            </div>
+                        </li>
+                        <li class="btnClass">
+                            <button id="1" class="cancelButton">Cancel Order</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

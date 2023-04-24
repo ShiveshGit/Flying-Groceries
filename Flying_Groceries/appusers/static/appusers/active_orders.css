@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+*,*::before,*::after{
+    box-sizing: border-box;
+}
+body{
+    margin:0px;
+    padding:0px;
+    font-family: 'Roboto',sans-serif;
+    font-size: 1.3rem;
+}
+img{
+    max-width: 100%;
+}
+.item{
+    border: 2px solid black;
+    padding:1.2em;
+    margin:0px;
+    
+/* display: flex; */
+}
+
+.mainContainer{
+    display: flex;
+    border: 2px solid purple;
+    margin:0px;
+    /* padding:2em; */
+}
+.mainContent{
+    width:70%;
+    padding:2em;
+}
+.orders{
+    width:100%;
+    text-align: left;
+    border-spacing:0.1em;
+}
+.status{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: flex-end;
+    gap:0.2em;
+}
+.status span:nth-child(1){
+    width:30%;
+    padding:0.5em;
+}
+.orders tr:nth-child(2n+1){
+    background-color: white;
+    padding:0.5em;
+}
+.orders tr:nth-child(2n){
+    background-color: #f6f4f4;
+}
+.head{
+    background-color: rgb(235, 77, 77);
+    color:white;
+    padding:0.8em 0.4em;
+    font-size:1.2rem;
+}

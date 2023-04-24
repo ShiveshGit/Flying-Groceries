@@ -4,7 +4,8 @@ from . import db_connection
 from django.contrib.auth import authenticate, login as dj_login, logout as dj_logout,get_user_model
 from .utils import get_plot
 from django.contrib.auth.decorators import login_required
-
+from datetime import datetime
+from appusers.models import Transporter
 User = get_user_model()
 
 # Create your views here.
@@ -19,9 +20,17 @@ def transporterRequests(request):
         decision = request.POST.get("decision")
         requestId = int(requestId)
         decision = int(decision)
-        print("Request Id = ",requestId)
-        print("Decision = ",decision)
         db_connection.setStatus(requestId,decision)
+        if decision == 1:
+            info = db_connection.getTransporterInfo()
+            Username = info[0]
+            Password = info[1]
+            try:
+                user = Transporter.objects.create_user(username=Username,password=Password)
+                user.save()
+                print(user)
+            except:
+                user=None
     params = {'Requests':lst}
     return render(request,'caretaker/requests3.html',params)
 
@@ -161,4 +170,64 @@ def viewProfile(request):
         params = {"id":id,"username":username,"pwd":pwd,"firstName":firstName,"middleName":middleName,"lastName":lastName}
         return render(request,"caretaker/Profile.html",params)
 
-# https://www.youtube.com/watch?v=x8yxM7rCvEc
+@login_required(login_url = '/caretaker/login')
+def addProduct(request):
+    message = ""
+    if request.method=="POST":
+        categoryId = request.POST.get("categoryId")
+        subCategoryId = request.POST.get("subCategoryId")
+        productId = request.POST.get("productId")
+        productName = request.POST.get("productName")
+        specification = request.POST.get("specification")
+        companyName = request.POST.get("companyName")
+        discount = request.POST.get("discount")
+        mrp = request.POST.get("mrp")
+        manufacturingDate = request.POST.get("manufacturingDate")
+        expiryDate = request.POST.get("expiryDate")
+        quantity = request.POST.get("quantity")
+        categoryId = int(categoryId)
+        subCategoryId = int(subCategoryId)
+        productId = int(productId)
+        expiry_date = datetime.strptime(expiryDate,"%Y-%m-%d")
+        manufacturing_date=datetime.strptime(manufacturingDate,"%Y-%m-%d")
+        print(type(manufacturing_date))
+        print(type(expiry_date))
+        print(manufacturing_date)
+        print(expiry_date)
+        print(manufacturing_date>expiry_date)
+        val=db_connection.addProduct(categoryId,subCategoryId,productId,productName,specification,companyName,discount,mrp,manufacturing_date,expiry_date,quantity)
+        if val==-1:
+            message="Invalid Category / SubCategoryId"
+        else:
+            message = "Manufacturing Date cannot be before the expiry date"
+    params ={"message":message}      
+    return render(request,"caretaker/add_product.html",params)
+
+@login_required(login_url = '/caretaker/login')
+def addCategory(request):
+    message = ""
+    if request.method=="POST":
+        categoryId = request.POST.get("categoryId")
+        categoryName = request.POST.get("categoryName")
+        val = db_connection.addCategory(categoryId,categoryName)
+        if val==-1:
+            message="Category Already Exsists"
+    params ={"message":message}      
+    return render(request,"caretaker/add_category.html",params)
+
+@login_required(login_url = '/caretaker/login')
+def addSubCategory(request):
+    message = ""
+    if request.method=="POST":
+        categoryId = request.POST.get("categoryId")
+        subCategoryId = request.POST.get("subCategoryId")
+        subCategoryName = request.POST.get("subCategoryName")
+        val = db_connection.addSubCategory(categoryId,subCategoryId,subCategoryName)
+        if val==-1:
+            message="Invalid Category/SubCategory"
+    params ={"message":message}      
+    return render(request,"caretaker/add_subcategory.html",params)
+
+def manageProduct(request):
+    message=""
+    
