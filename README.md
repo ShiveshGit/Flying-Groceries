@@ -23,7 +23,7 @@ A complete E-Commerce website built for the Database Management System project.
 
 👉🏻 Go to http://127.0.0.1:8000/ after completing the above steps to view the website
 
-## User Interface Screenshots and Database Schema:
+## 3. User Interface Screenshots and Database Schema:
 
 👉🏻 The user-interface walkthrough and  database schema can be found in the [documentation.pdf](https://github.com/ShiveshGit/Flying-Groceries/blob/master/Documentation.pdf) file.
 
