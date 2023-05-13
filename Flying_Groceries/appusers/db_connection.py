@@ -190,3 +190,5 @@ def cancelOrders(data,stringDate,customerId):
     # print(productDatas)
     # print(checkoutDate)
 
+orders = getActiveOrders(116)
+print(orders)

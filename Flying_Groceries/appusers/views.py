@@ -263,6 +263,7 @@ def getActiveOrders(request):
 
     customers = db_connection.getCustomerDetails(request.user.username)
     customerId = customers[0][0]
+    print("Customer Id = ",customerId)
     orders = db_connection.getActiveOrders(customerId)
     print(orders)
     return render(request,'appusers/current_orders.html',context={"order":orders.values(),"date":orders.keys()})
