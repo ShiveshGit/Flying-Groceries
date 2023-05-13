@@ -45,20 +45,7 @@
                 <div class="specialGrid">
                     <div class="specialFlex">
                         <h3>Buy {{ActiveSubCategory}} Online</h3>
-                        <div class="checkboxes">
-                            <h3>Filters : </h3>
-                            <ul>
-                                {% csrf_token %}
-                                <li>
-                                    <input type="checkbox" id="priceFilter" class="toggle" name="priceFilter">
-                                    <label for="priceFilter">Price</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" id="discountFilter" class="toggle" name="discountFilter">
-                                    <label for="discountFilter">Discount</label>
-                                </li>
-                            </ul>
-                        </div>
+                        {% csrf_token %}
                     </div>
                 </div>
                 {% for i in products %}
