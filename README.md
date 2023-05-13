@@ -26,6 +26,6 @@ A complete E-Commerce website built for the Database Management System project.
 
 ## 3. Team Members:
 
-👉🏻 [Shivesh Gulati]("https://github.com/ShiveshGit")
+👉🏻 [Shivesh Gulati](https://github.com/ShiveshGit)
 
-👉🏻 [Shantanu Prakash]("https://github.com/Shantanu21285")
+👉🏻 [Shantanu Prakash](https://github.com/Shantanu21285)
