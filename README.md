@@ -1,5 +1,5 @@
 # Flying Groceries
-A complete E-Commerce website built for the Database Management System project.
+A complete E-Commerce website built for the Database Management System project with main emphasis on MySQL database.
 
 ## 1. Tech-stack Used :
     👉🏻 HTML CSS JavaScript (Front end)
